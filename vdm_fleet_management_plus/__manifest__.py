@@ -2,7 +2,7 @@
 {
     'name': 'Fleet Management Plus',
     'summary': 'Complete fleet management with vehicle tracking, maintenance, fuel, and cost analysis',
-    'version': '19.0.1.0.0',
+    'version': '18.0.1.0.0',
     'category': 'Services/Fleet',
     'description': """
         Fleet Management Plus
