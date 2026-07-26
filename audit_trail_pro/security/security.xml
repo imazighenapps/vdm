@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Groups with Odoo 19 privilege system -->
+    <record id="module_category_audit_trail" model="res.groups.privilege">
+        <field name="name">Audit Trail</field>
+        <field name="category_id" ref="base.module_category_extra"/>
+        <field name="sequence">50</field>
+    </record>
+
+    <record id="group_audit_user" model="res.groups">
+        <field name="name">Audit User</field>
+        <field name="privilege_id" ref="module_category_audit_trail"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        <field name="comment">View audit logs and dashboard</field>
+    </record>
+
+    <record id="group_audit_manager" model="res.groups">
+        <field name="name">Audit Manager</field>
+        <field name="privilege_id" ref="module_category_audit_trail"/>
+        <field name="implied_ids" eval="[(4, ref('group_audit_user'))]"/>
+        <field name="comment">Full access including delete and configuration</field>
+    </record>
+
+    <!-- Record Rules - Users see only their company logs -->
+    <record id="rule_audit_log_company" model="ir.rule">
+        <field name="name">Audit Log: Company</field>
+        <field name="model_id" ref="model_audit_trail_log"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+        <field name="groups" eval="[(4, ref('group_audit_user'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+
+    <!-- Managers can delete logs -->
+    <record id="rule_audit_log_manager_delete" model="ir.rule">
+        <field name="name">Audit Log: Manager Delete</field>
+        <field name="model_id" ref="model_audit_trail_log"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_audit_manager'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+
+    <!-- Alert rules -->
+    <record id="rule_audit_alert_company" model="ir.rule">
+        <field name="name">Audit Alert: Company</field>
+        <field name="model_id" ref="model_audit_trail_alert"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+        <field name="groups" eval="[(4, ref('group_audit_user'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+
+    <record id="rule_audit_alert_manager" model="ir.rule">
+        <field name="name">Audit Alert: Manager Full Access</field>
+        <field name="model_id" ref="model_audit_trail_alert"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_audit_manager'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+
+    <!-- Config rules -->
+    <record id="rule_audit_config_company" model="ir.rule">
+        <field name="name">Audit Config: Company</field>
+        <field name="model_id" ref="model_audit_trail_config"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+        <field name="groups" eval="[(4, ref('group_audit_manager'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+</odoo>

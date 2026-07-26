@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Tree View -->
+    <record id="view_audit_alert_tree" model="ir.ui.view">
+        <field name="name">audit.trail.alert.list</field>
+        <field name="model">audit.trail.alert</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="alert_type" widget="badge"/>
+                <field name="threshold"/>
+                <field name="time_window"/>
+                <field name="severity" widget="badge" decoration-info="severity == 'low'" decoration-warning="severity == 'medium'" decoration-danger="severity in ('high', 'critical')"/>
+                <field name="state" widget="badge" decoration-success="state == 'active'" decoration-warning="state == 'triggered'" decoration-danger="state == 'inactive'"/>
+                <field name="last_triggered"/>
+                <field name="trigger_count"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_audit_alert_form" model="ir.ui.view">
+        <field name="name">audit.trail.alert.form</field>
+        <field name="model">audit.trail.alert</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_activate" type="object" string="Activate" class="oe_highlight" invisible="state != 'inactive'"/>
+                    <button name="action_deactivate" type="object" string="Deactivate" invisible="state == 'inactive'"/>
+                    <button name="action_reset" type="object" string="Reset" invisible="state != 'triggered'"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="Alert Name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="sequence"/>
+                            <field name="alert_type"/>
+                            <field name="threshold"/>
+                            <field name="time_window"/>
+                        </group>
+                        <group>
+                            <field name="severity" widget="badge"/>
+                            <field name="last_triggered"/>
+                            <field name="trigger_count"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Filters">
+                            <group>
+                                <field name="model_ids" widget="many2many_tags"/>
+                                <field name="user_ids" widget="many2many_tags"/>
+                            </group>
+                        </page>
+                        <page string="Notifications">
+                            <group>
+                                <field name="notify_email"/>
+                                <field name="notify_users" widget="many2many_tags"/>
+                                <field name="email_partner_ids" widget="many2many_tags"/>
+                            </group>
+                        </page>
+                        <page string="Notes">
+                            <field name="notes" placeholder="Alert notes..."/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <!-- Search View -->
+    <record id="view_audit_alert_search" model="ir.ui.view">
+        <field name="name">audit.trail.alert.search</field>
+        <field name="model">audit.trail.alert</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="alert_type"/>
+                <filter name="filter_active" string="Active" domain="[('state', '=', 'active')]"/>
+                <filter name="filter_triggered" string="Triggered" domain="[('state', '=', 'triggered')]"/>
+                <group expand="0" string="Group By">
+                    <filter name="group_type" string="Alert Type" context="{'group_by': 'alert_type'}"/>
+                    <filter name="group_severity" string="Severity" context="{'group_by': 'severity'}"/>
+                    <filter name="group_state" string="Status" context="{'group_by': 'state'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_audit_alert" model="ir.actions.act_window">
+        <field name="name">Alerts</field>
+        <field name="res_model">audit.trail.alert</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_audit_alert_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No alerts configured
+            </p>
+            <p>Create alerts to monitor suspicious activities.</p>
+        </field>
+    </record>
+</odoo>

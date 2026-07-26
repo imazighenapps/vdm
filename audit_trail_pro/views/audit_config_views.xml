@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Form View -->
+    <record id="view_audit_config_form" model="ir.ui.view">
+        <field name="name">audit.trail.config.form</field>
+        <field name="model">audit.trail.config</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="company_id" placeholder="Audit Configuration"/>
+                        </h1>
+                    </div>
+                    <notebook>
+                        <page string="General">
+                            <group>
+                                <group>
+                                    <field name="enable_logging"/>
+                                    <field name="enable_risk_scoring"/>
+                                    <field name="enable_alerts"/>
+                                    <field name="enable_dashboard"/>
+                                </group>
+                                <group>
+                                    <field name="retention_period"/>
+                                    <field name="default_severity"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Action Logging">
+                            <group>
+                                <group>
+                                    <field name="log_create"/>
+                                    <field name="log_update"/>
+                                    <field name="log_delete"/>
+                                    <field name="log_read"/>
+                                </group>
+                                <group>
+                                    <field name="log_exports"/>
+                                    <field name="log_prints"/>
+                                    <field name="log_emails"/>
+                                    <field name="log_connections"/>
+                                </group>
+                                <group>
+                                    <field name="log_rights"/>
+                                    <field name="log_settings"/>
+                                    <field name="log_reads_detailed"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Model Filtering">
+                            <group>
+                                <field name="model_filter_type"/>
+                            </group>
+                            <group>
+                                <field name="excluded_model_ids" widget="many2many_tags" invisible="model_filter_type != 'blacklist'"/>
+                                <field name="included_model_ids" widget="many2many_tags" invisible="model_filter_type != 'whitelist'"/>
+                            </group>
+                        </page>
+                        <page string="Field Exclusion">
+                            <group>
+                                <field name="excluded_field_ids" widget="many2many_tags"/>
+                            </group>
+                        </page>
+                    </notebook>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_logs" type="object" class="oe_stat_button" icon="fa-list">
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_text">View Logs</span>
+                            </div>
+                        </button>
+                        <button name="action_view_alerts" type="object" class="oe_stat_button" icon="fa-bell">
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_text">View Alerts</span>
+                            </div>
+                        </button>
+                        <button name="action_cleanup_now" type="object" class="oe_stat_button" icon="fa-trash">
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_text">Cleanup Now</span>
+                            </div>
+                        </button>
+                        <button name="action_reset_defaults" type="object" class="oe_stat_button" icon="fa-refresh">
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_text">Reset Defaults</span>
+                            </div>
+                        </button>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_audit_config" model="ir.actions.act_window">
+        <field name="name">Configuration</field>
+        <field name="res_model">audit.trail.config</field>
+        <field name="view_mode">form</field>
+        <field name="target">current</field>
+    </record>
+</odoo>

@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_audit_log_user,audit.trail.log.user,model_audit_trail_log,group_audit_user,1,0,0,0
+access_audit_log_manager,audit.trail.log.manager,model_audit_trail_log,group_audit_manager,1,1,1,1
+access_audit_alert_user,audit.trail.alert.user,model_audit_trail_alert,group_audit_user,1,0,0,0
+access_audit_alert_manager,audit.trail.alert.manager,model_audit_trail_alert,group_audit_manager,1,1,1,1
+access_audit_config_manager,audit.trail.config.manager,model_audit_trail_config,group_audit_manager,1,1,1,0
+access_audit_log_export_wizard,audit.log.export.wizard,model_audit_log_export_wizard,group_audit_manager,1,1,1,0

@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Tree View -->
+    <record id="view_audit_log_tree" model="ir.ui.view">
+        <field name="name">audit.trail.log.list</field>
+        <field name="model">audit.trail.log</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="create_date" string="Date"/>
+                <field name="user_id" string="User"/>
+                <field name="action_type" string="Action" widget="badge" decoration-success="action_type in ('create', 'login')" decoration-warning="action_type in ('update', 'export', 'print')" decoration-danger="action_type in ('delete', 'login_failed', 'rights_change')"/>
+                <field name="model_name" string="Model"/>
+                <field name="record_name" string="Record"/>
+                <field name="field_name" string="Field"/>
+                <field name="severity" string="Severity" widget="badge" decoration-info="severity == 'low'" decoration-warning="severity == 'medium'" decoration-danger="severity in ('high', 'critical')"/>
+                <field name="risk_score" string="Risk"/>
+                <field name="ip_address" string="IP Address"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_audit_log_form" model="ir.ui.view">
+        <field name="name">audit.trail.log.form</field>
+        <field name="model">audit.trail.log</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="display_name" placeholder="Audit Log Entry"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="sequence"/>
+                            <field name="user_id" widget="many2one_avatar"/>
+                            <field name="login"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                        </group>
+                        <group>
+                            <field name="create_date"/>
+                            <field name="action_type" widget="badge"/>
+                            <field name="severity" widget="badge"/>
+                            <field name="risk_score"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="model_name"/>
+                            <field name="model_id"/>
+                            <field name="record_id"/>
+                            <field name="record_name"/>
+                        </group>
+                        <group>
+                            <field name="field_name"/>
+                            <field name="field_label"/>
+                            <field name="tags"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Change Details">
+                            <group>
+                                <field name="old_value" string="Old Value" colspan="2"/>
+                                <field name="new_value" string="New Value" colspan="2"/>
+                                <field name="change_json" string="Change JSON" colspan="2" widget="text"/>
+                            </group>
+                        </page>
+                        <page string="Context">
+                            <group>
+                                <field name="ip_address"/>
+                                <field name="browser"/>
+                                <field name="operating_system"/>
+                                <field name="session_id"/>
+                                <field name="http_request"/>
+                            </group>
+                        </page>
+                        <page string="Notes">
+                            <field name="notes" placeholder="Additional notes..."/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <!-- Search View -->
+    <record id="view_audit_log_search" model="ir.ui.view">
+        <field name="name">audit.trail.log.search</field>
+        <field name="model">audit.trail.log</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="user_id"/>
+                <field name="model_name"/>
+                <field name="record_name"/>
+                <field name="field_name"/>
+                <field name="ip_address"/>
+                <filter name="filter_today" string="Today" domain="[('create_date', '>=', time.strftime('%%Y-%%m-%%d'))]"/>
+                <filter name="filter_week" string="This Week" domain="[('create_date', '>=', (context_today() - relativedelta(days=7)).strftime('%%Y-%%m-%%d'))]"/>
+                <filter name="filter_month" string="This Month" domain="[('create_date', '>=', (context_today() - relativedelta(months=1)).strftime('%%Y-%%m-%%d'))]"/>
+                <separator/>
+                <filter name="filter_creates" string="Creates" domain="[('action_type', '=', 'create')]"/>
+                <filter name="filter_updates" string="Updates" domain="[('action_type', '=', 'update')]"/>
+                <filter name="filter_deletes" string="Deletes" domain="[('action_type', '=', 'delete')]"/>
+                <filter name="filter_logins" string="Logins" domain="[('action_type', 'in', ('login', 'logout', 'login_failed'))]"/>
+                <filter name="filter_exports" string="Exports" domain="[('action_type', '=', 'export')]"/>
+                <separator/>
+                <filter name="filter_high_risk" string="High Risk" domain="[('risk_score', '>=', 20)]"/>
+                <filter name="filter_critical" string="Critical" domain="[('severity', '=', 'critical')]"/>
+                <group expand="0" string="Group By">
+                    <filter name="group_user" string="User" context="{'group_by': 'user_id'}"/>
+                    <filter name="group_model" string="Model" context="{'group_by': 'model_name'}"/>
+                    <filter name="group_action" string="Action" context="{'group_by': 'action_type'}"/>
+                    <filter name="group_severity" string="Severity" context="{'group_by': 'severity'}"/>
+                    <filter name="group_date" string="Date" context="{'group_by': 'create_date:month'}"/>
+                    <filter name="group_ip" string="IP Address" context="{'group_by': 'ip_address'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Pivot View -->
+    <record id="view_audit_log_pivot" model="ir.ui.view">
+        <field name="name">audit.trail.log.pivot</field>
+        <field name="model">audit.trail.log</field>
+        <field name="arch" type="xml">
+            <pivot>
+                <field name="user_id" type="row"/>
+                <field name="action_type" type="col"/>
+            </pivot>
+        </field>
+    </record>
+
+    <!-- Graph View -->
+    <record id="view_audit_log_graph" model="ir.ui.view">
+        <field name="name">audit.trail.log.graph</field>
+        <field name="model">audit.trail.log</field>
+        <field name="arch" type="xml">
+            <graph>
+                <field name="create_date" type="row"/>
+                <field name="action_type" type="col"/>
+            </graph>
+        </field>
+    </record>
+
+    <!-- Calendar View -->
+    <record id="view_audit_log_calendar" model="ir.ui.view">
+        <field name="name">audit.trail.log.calendar</field>
+        <field name="model">audit.trail.log</field>
+        <field name="arch" type="xml">
+            <calendar date_start="create_date" date_stop="create_date" string="Audit Logs">
+                <field name="user_id"/>
+            </calendar>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_audit_log" model="ir.actions.act_window">
+        <field name="name">Audit Logs</field>
+        <field name="res_model">audit.trail.log</field>
+        <field name="view_mode">list,form,pivot,graph,calendar</field>
+        <field name="search_view_id" ref="view_audit_log_search"/>
+        <field name="context">{'search_default_filter_week': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No audit logs yet
+            </p>
+            <p>Audit logs will appear here as users interact with the system.</p>
+        </field>
+    </record>
+</odoo>

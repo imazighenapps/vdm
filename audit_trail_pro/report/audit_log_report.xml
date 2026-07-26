@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_report_audit_log" model="ir.actions.report">
+        <field name="name">Audit Log Report</field>
+        <field name="model">audit.trail.log</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">audit_trail_pro.report_audit_log</field>
+        <field name="report_file">audit_trail_pro.report_audit_log</field>
+        <field name="binding_model_id" ref="model_audit_trail_log"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <record id="report_audit_log" model="ir.ui.view">
+        <field name="name">audit_trail_pro.report_audit_log</field>
+        <field name="model">ir.qweb</field>
+        <field name="arch" type="xml">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="web.external_layout">
+                        <div class="page">
+                            <h2>Audit Log Report</h2>
+                            <table class="table table-condensed">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>User</th>
+                                        <th>Action</th>
+                                        <th>Model</th>
+                                        <th>Record</th>
+                                        <th>Field</th>
+                                        <th>Old Value</th>
+                                        <th>New Value</th>
+                                        <th>Severity</th>
+                                        <th>Risk Score</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="docs" t-as="entry">
+                                        <tr>
+                                            <td><t t-out="entry.create_date"/></td>
+                                            <td><t t-out="entry.user_id.name"/></td>
+                                            <td><t t-out="entry.action_type"/></td>
+                                            <td><t t-out="entry.model_name"/></td>
+                                            <td><t t-out="entry.record_name"/></td>
+                                            <td><t t-out="entry.field_name"/></td>
+                                            <td><t t-out="entry.old_value"/></td>
+                                            <td><t t-out="entry.new_value"/></td>
+                                            <td><t t-out="entry.severity"/></td>
+                                            <td><t t-out="entry.risk_score"/></td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </field>
+    </record>
+</odoo>
