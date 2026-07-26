@@ -1,376 +1,428 @@
 <!DOCTYPE html>
+<div>
+
 <!-- HERO -->
-<div style="background:#0d1b2e;color:#fff;padding:55px 30px;text-align:center">
-    <div style="max-width:850px;margin:0 auto">
-        <div style="font-size:2.8rem;margin-bottom:8px">&#x1F3D7;&#xFE0F;</div>
-        <h1 style="font-size:2.4rem;margin:0 0 10px 0;font-weight:700">Construction Project Tracker</h1>
-        <p style="font-size:1.1rem;opacity:0.9;line-height:1.6;margin:0 0 20px 0">Complete construction project management for Odoo 19<br/>Bill of Quantities &bull; Daily Reports &bull; RA Billing &bull; Change Orders &bull; Subcontracts</p>
-        <span style="display:inline-block;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);padding:7px 20px;border-radius:18px;font-size:0.82rem">VERSION 19.0.1.0.0 &nbsp;&bull;&nbsp; Odoo 19 Community &amp; Enterprise</span>
-    </div>
+<div style="background-color:#0d1b2e; padding:64px 40px 72px; text-align:center;">
+  <div style="display:inline-block; background-color:#162d50; border:1px solid #2a5298; color:#7eb8e6; font-size:11px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; padding:6px 18px; border-radius:100px; margin-bottom:28px;">
+    &#x25CF; Odoo 19 &middot; v19.0.1.0.0
+  </div>
+  <h1 style="font-size:52px; font-weight:800; color:#ffffff; line-height:1.1; letter-spacing:-.02em; margin-bottom:18px;">
+    Construction Project <span style="color:#5dade2;">Tracker</span>
+  </h1>
+  <p style="font-size:18px; color:#aaaacc; max-width:620px; margin:0 auto 36px; font-weight:300;">
+    Complete construction project management for Odoo 19. Bill of Quantities, Daily Progress Reports, RA Billing, Change Orders, Subcontracts &mdash; all in one module.
+  </p>
+  <div style="margin-bottom:48px;">
+    <span style="display:inline-block; background-color:#1a1a2e; border:1px solid #2d2d4e; color:#cccccc; font-size:13px; padding:6px 16px; border-radius:100px; margin:4px;">BOQ</span>
+    <span style="display:inline-block; background-color:#1a1a2e; border:1px solid #2d2d4e; color:#cccccc; font-size:13px; padding:6px 16px; border-radius:100px; margin:4px;">DPR</span>
+    <span style="display:inline-block; background-color:#1a1a2e; border:1px solid #2d2d4e; color:#cccccc; font-size:13px; padding:6px 16px; border-radius:100px; margin:4px;">RA Billing</span>
+    <span style="display:inline-block; background-color:#1a1a2e; border:1px solid #2d2d4e; color:#cccccc; font-size:13px; padding:6px 16px; border-radius:100px; margin:4px;">Change Orders</span>
+    <span style="display:inline-block; background-color:#1a1a2e; border:1px solid #2d2d4e; color:#cccccc; font-size:13px; padding:6px 16px; border-radius:100px; margin:4px;">Subcontracts</span>
+    <span style="display:inline-block; background-color:#1a1a2e; border:1px solid #2d2d4e; color:#cccccc; font-size:13px; padding:6px 16px; border-radius:100px; margin:4px;">OWL 3 Dashboard</span>
+  </div>
+  <table width="100%" cellpadding="0" cellspacing="0" style="max-width:640px; margin:0 auto;">
+    <tr>
+      <td style="text-align:center; padding:0 16px;">
+        <div style="font-size:40px; font-weight:800; color:#5dade2;">14</div>
+        <div style="font-size:11px; color:#888899; letter-spacing:.08em; text-transform:uppercase; font-weight:500;">Models</div>
+      </td>
+      <td style="text-align:center; padding:0 16px;">
+        <div style="font-size:40px; font-weight:800; color:#5dade2;">3</div>
+        <div style="font-size:11px; color:#888899; letter-spacing:.08em; text-transform:uppercase; font-weight:500;">PDF Reports</div>
+      </td>
+      <td style="text-align:center; padding:0 16px;">
+        <div style="font-size:40px; font-weight:800; color:#5dade2;">6</div>
+        <div style="font-size:11px; color:#888899; letter-spacing:.08em; text-transform:uppercase; font-weight:500;">Sub-Modules</div>
+      </td>
+      <td style="text-align:center; padding:0 16px;">
+        <div style="font-size:40px; font-weight:800; color:#5dade2;">0</div>
+        <div style="font-size:11px; color:#888899; letter-spacing:.08em; text-transform:uppercase; font-weight:500;">External Deps</div>
+      </td>
+    </tr>
+  </table>
 </div>
 
-<!-- CONTAINER -->
-<div style="max-width:1040px;margin:0 auto;padding:35px 18px">
-
-<!-- 1. FEATURES -->
-<div style="background:#fff;border-radius:10px;padding:32px;margin-bottom:26px;box-shadow:0 1px 6px rgba(0,0,0,0.07)">
-    <h2 style="color:#0d1b2e;font-size:1.35rem;margin:0 0 6px 0;text-align:center">What You Get</h2>
-    <div style="width:50px;height:3px;background:#1a5276;margin:0 auto 28px auto;border-radius:2px"></div>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px">
-        <div style="background:#f7f9fb;border:1px solid #e0e5ec;border-radius:8px;padding:20px;text-align:center">
-            <div style="font-size:1.9rem;margin-bottom:8px">&#x1F3D7;&#xFE0F;</div>
-            <h3 style="color:#0d1b2e;font-size:0.95rem;margin:0 0 5px 0">Projects &amp; Phases</h3>
-            <p style="color:#5a6577;font-size:0.82rem;line-height:1.5;margin:0">Create projects, break into phases, track progress with budgets.</p>
-        </div>
-        <div style="background:#f7f9fb;border:1px solid #e0e5ec;border-radius:8px;padding:20px;text-align:center">
-            <div style="font-size:1.9rem;margin-bottom:8px">&#x1F4CB;</div>
-            <h3 style="color:#0d1b2e;font-size:0.95rem;margin:0 0 5px 0">Bill of Quantities</h3>
-            <p style="color:#5a6577;font-size:0.82rem;line-height:1.5;margin:0">BOQ with item codes, work types, quantities, rates, revisions.</p>
-        </div>
-        <div style="background:#f7f9fb;border:1px solid #e0e5ec;border-radius:8px;padding:20px;text-align:center">
-            <div style="font-size:1.9rem;margin-bottom:8px">&#x1F4C5;</div>
-            <h3 style="color:#0d1b2e;font-size:0.95rem;margin:0 0 5px 0">Daily Progress Reports</h3>
-            <p style="color:#5a6577;font-size:0.82rem;line-height:1.5;margin:0">Weather, labor, materials, machinery, safety, next-day plan.</p>
-        </div>
-        <div style="background:#f7f9fb;border:1px solid #e0e5ec;border-radius:8px;padding:20px;text-align:center">
-            <div style="font-size:1.9rem;margin-bottom:8px">&#x1F4F8;</div>
-            <h3 style="color:#0d1b2e;font-size:0.95rem;margin:0 0 5px 0">Photo Geolocation</h3>
-            <p style="color:#5a6577;font-size:0.82rem;line-height:1.5;margin:0">Site photos with GPS, linked to DPRs and phases.</p>
-        </div>
-        <div style="background:#f7f9fb;border:1px solid #e0e5ec;border-radius:8px;padding:20px;text-align:center">
-            <div style="font-size:1.9rem;margin-bottom:8px">&#x1F4B0;</div>
-            <h3 style="color:#0d1b2e;font-size:0.95rem;margin:0 0 5px 0">RA Billing</h3>
-            <p style="color:#5a6577;font-size:0.82rem;line-height:1.5;margin:0">Retention, advance recovery, invoice creation.</p>
-        </div>
-        <div style="background:#f7f9fb;border:1px solid #e0e5ec;border-radius:8px;padding:20px;text-align:center">
-            <div style="font-size:1.9rem;margin-bottom:8px">&#x1F504;</div>
-            <h3 style="color:#0d1b2e;font-size:0.95rem;margin:0 0 5px 0">Change Orders</h3>
-            <p style="color:#5a6577;font-size:0.82rem;line-height:1.5;margin:0">Variation requests with approval workflow.</p>
-        </div>
-        <div style="background:#f7f9fb;border:1px solid #e0e5ec;border-radius:8px;padding:20px;text-align:center">
-            <div style="font-size:1.9rem;margin-bottom:8px">&#x1F477;</div>
-            <h3 style="color:#0d1b2e;font-size:0.95rem;margin:0 0 5px 0">Subcontracts</h3>
-            <p style="color:#5a6577;font-size:0.82rem;line-height:1.5;margin:0">Subcontractor tracking, retention, measurements.</p>
-        </div>
-        <div style="background:#f7f9fb;border:1px solid #e0e5ec;border-radius:8px;padding:20px;text-align:center">
-            <div style="font-size:1.9rem;margin-bottom:8px">&#x1F4C8;</div>
-            <h3 style="color:#0d1b2e;font-size:0.95rem;margin:0 0 5px 0">Dashboard</h3>
-            <p style="color:#5a6577;font-size:0.82rem;line-height:1.5;margin:0">OWL 3 interactive dashboard with stats and alerts.</p>
-        </div>
-        <div style="background:#f7f9fb;border:1px solid #e0e5ec;border-radius:8px;padding:20px;text-align:center">
-            <div style="font-size:1.9rem;margin-bottom:8px">&#x1F4C4;</div>
-            <h3 style="color:#0d1b2e;font-size:0.95rem;margin:0 0 5px 0">PDF Reports</h3>
-            <p style="color:#5a6577;font-size:0.82rem;line-height:1.5;margin:0">BOQ, DPR, and RA Billing reports with one click.</p>
-        </div>
-    </div>
+<!-- FEATURES -->
+<div style="padding:64px 40px; background-color:#ffffff;">
+  <div style="max-width:960px; margin:0 auto;">
+    <div style="font-size:11px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:#1a5276; margin-bottom:10px;">Features</div>
+    <h2 style="font-size:34px; font-weight:800; color:#0d1b2e; letter-spacing:-.02em; margin-bottom:12px;">Everything you need to manage construction projects</h2>
+    <p style="font-size:16px; color:#7a7f91; margin-bottom:40px; font-weight:300;">One module, all the tools your team needs to track projects from start to finish inside Odoo.</p>
+    <table width="100%" cellpadding="0" cellspacing="0">
+      <tr>
+        <td width="33%" style="padding:4px; vertical-align:top;">
+          <div style="border:1px solid #e8eaf0; border-radius:14px; padding:28px 24px; background-color:#fafbff;">
+            <div style="font-size:28px; margin-bottom:12px;">&#127959;&#65039;</div>
+            <div style="font-size:15px; font-weight:700; color:#0d1b2e; margin-bottom:8px;">Projects &amp; Phases</div>
+            <p style="font-size:13px; color:#7a7f91; line-height:1.6; margin:0;">Create projects with clients, contract values, timelines. Break into phases with budgets and progress tracking.</p>
+          </div>
+        </td>
+        <td width="33%" style="padding:4px; vertical-align:top;">
+          <div style="border:1px solid #e8eaf0; border-radius:14px; padding:28px 24px; background-color:#fafbff;">
+            <div style="font-size:28px; margin-bottom:12px;">&#128203;</div>
+            <div style="font-size:15px; font-weight:700; color:#0d1b2e; margin-bottom:8px;">Bill of Quantities</div>
+            <p style="font-size:13px; color:#7a7f91; line-height:1.6; margin:0;">BOQ with item codes, work types, quantities, unit rates. Revision tracking and approval workflow.</p>
+          </div>
+        </td>
+        <td width="33%" style="padding:4px; vertical-align:top;">
+          <div style="border:1px solid #e8eaf0; border-radius:14px; padding:28px 24px; background-color:#fafbff;">
+            <div style="font-size:28px; margin-bottom:12px;">&#128197;</div>
+            <div style="font-size:15px; font-weight:700; color:#0d1b2e; margin-bottom:8px;">Daily Progress Reports</div>
+            <p style="font-size:13px; color:#7a7f91; line-height:1.6; margin:0;">Daily site diary: weather, labor, materials, machinery, safety issues, next-day plan.</p>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td width="33%" style="padding:4px; vertical-align:top;">
+          <div style="border:1px solid #e8eaf0; border-radius:14px; padding:28px 24px; background-color:#fafbff;">
+            <div style="font-size:28px; margin-bottom:12px;">&#128248;</div>
+            <div style="font-size:15px; font-weight:700; color:#0d1b2e; margin-bottom:8px;">Photo Geolocation</div>
+            <p style="font-size:13px; color:#7a7f91; line-height:1.6; margin:0;">Site photos with GPS coordinates, linked to DPRs and phases. Organize by type.</p>
+          </div>
+        </td>
+        <td width="33%" style="padding:4px; vertical-align:top;">
+          <div style="border:1px solid #e8eaf0; border-radius:14px; padding:28px 24px; background-color:#fafbff;">
+            <div style="font-size:28px; margin-bottom:12px;">&#128176;</div>
+            <div style="font-size:15px; font-weight:700; color:#0d1b2e; margin-bottom:8px;">RA Billing</div>
+            <p style="font-size:13px; color:#7a7f91; line-height:1.6; margin:0;">Running Account billing with retention, advance recovery, and direct invoice creation.</p>
+          </div>
+        </td>
+        <td width="33%" style="padding:4px; vertical-align:top;">
+          <div style="border:1px solid #e8eaf0; border-radius:14px; padding:28px 24px; background-color:#fafbff;">
+            <div style="font-size:28px; margin-bottom:12px;">&#128260;</div>
+            <div style="font-size:15px; font-weight:700; color:#0d1b2e; margin-bottom:8px;">Change Orders</div>
+            <p style="font-size:13px; color:#7a7f91; line-height:1.6; margin:0;">Variation requests with reasons, approval workflow, and budget impact tracking.</p>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td width="33%" style="padding:4px; vertical-align:top;">
+          <div style="border:1px solid #e8eaf0; border-radius:14px; padding:28px 24px; background-color:#fafbff;">
+            <div style="font-size:28px; margin-bottom:12px;">&#128119;</div>
+            <div style="font-size:15px; font-weight:700; color:#0d1b2e; margin-bottom:8px;">Subcontracts</div>
+            <p style="font-size:13px; color:#7a7f91; line-height:1.6; margin:0;">Track subcontractors, retention, payments, and measurement books automatically.</p>
+          </div>
+        </td>
+        <td width="33%" style="padding:4px; vertical-align:top;">
+          <div style="border:1px solid #e8eaf0; border-radius:14px; padding:28px 24px; background-color:#fafbff;">
+            <div style="font-size:28px; margin-bottom:12px;">&#128200;</div>
+            <div style="font-size:15px; font-weight:700; color:#0d1b2e; margin-bottom:8px;">OWL 3 Dashboard</div>
+            <p style="font-size:13px; color:#7a7f91; line-height:1.6; margin:0;">Interactive dashboard with stats, alerts, quick actions, and project overview.</p>
+          </div>
+        </td>
+        <td width="33%" style="padding:4px; vertical-align:top;">
+          <div style="border:1px solid #e8eaf0; border-radius:14px; padding:28px 24px; background-color:#fafbff;">
+            <div style="font-size:28px; margin-bottom:12px;">&#128196;</div>
+            <div style="font-size:15px; font-weight:700; color:#0d1b2e; margin-bottom:8px;">PDF Reports</div>
+            <p style="font-size:13px; color:#7a7f91; line-height:1.6; margin:0;">Generate BOQ, DPR, and RA Billing reports with one click. Print-ready.</p>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
 </div>
 
-<!-- 2. HOW IT WORKS -->
-<div style="background:#fff;border-radius:10px;padding:32px;margin-bottom:26px;box-shadow:0 1px 6px rgba(0,0,0,0.07)">
-    <h2 style="color:#0d1b2e;font-size:1.35rem;margin:0 0 6px 0;text-align:center">How It Works</h2>
-    <div style="width:50px;height:3px;background:#1a5276;margin:0 auto 28px auto;border-radius:2px"></div>
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;text-align:center">
-        <div>
-            <div style="display:inline-flex;width:44px;height:44px;align-items:center;justify-content:center;background:#1a5276;color:#fff;border-radius:50%;font-size:1.1rem;font-weight:700;margin-bottom:8px">1</div>
-            <h4 style="color:#0d1b2e;font-size:0.9rem;margin:0 0 4px 0">Create Project</h4>
-            <p style="color:#5a6577;font-size:0.8rem;line-height:1.4;margin:0">Client, contract value, timeline, site manager.</p>
-        </div>
-        <div>
-            <div style="display:inline-flex;width:44px;height:44px;align-items:center;justify-content:center;background:#1a5276;color:#fff;border-radius:50%;font-size:1.1rem;font-weight:700;margin-bottom:8px">2</div>
-            <h4 style="color:#0d1b2e;font-size:0.9rem;margin:0 0 4px 0">Define BOQ &amp; Phases</h4>
-            <p style="color:#5a6577;font-size:0.8rem;line-height:1.4;margin:0">Break into phases, build Bill of Quantities.</p>
-        </div>
-        <div>
-            <div style="display:inline-flex;width:44px;height:44px;align-items:center;justify-content:center;background:#1a5276;color:#fff;border-radius:50%;font-size:1.1rem;font-weight:700;margin-bottom:8px">3</div>
-            <h4 style="color:#0d1b2e;font-size:0.9rem;margin:0 0 4px 0">Track Daily</h4>
-            <p style="color:#5a6577;font-size:0.8rem;line-height:1.4;margin:0">DPRs, photos, expenses every day.</p>
-        </div>
-        <div>
-            <div style="display:inline-flex;width:44px;height:44px;align-items:center;justify-content:center;background:#1a5276;color:#fff;border-radius:50%;font-size:1.1rem;font-weight:700;margin-bottom:8px">4</div>
-            <h4 style="color:#0d1b2e;font-size:0.9rem;margin:0 0 4px 0">Bill &amp; Report</h4>
-            <p style="color:#5a6577;font-size:0.8rem;line-height:1.4;margin:0">RA billings, change orders, PDF reports.</p>
-        </div>
-    </div>
+<!-- HOW IT WORKS -->
+<div style="padding:64px 40px; background-color:#0d1b2e; border-top:1px solid #1e2030;">
+  <div style="max-width:960px; margin:0 auto;">
+    <div style="font-size:11px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:#5dade2; margin-bottom:10px;">How it works</div>
+    <h2 style="font-size:34px; font-weight:800; color:#ffffff; letter-spacing:-.02em; margin-bottom:12px;">From project creation to final billing</h2>
+    <p style="font-size:16px; color:#aaaacc; margin-bottom:48px; font-weight:300;">A simple 4-step workflow designed for construction teams.</p>
+    <table width="100%" cellpadding="0" cellspacing="0">
+      <tr>
+        <td width="25%" style="padding:0 12px; text-align:center; vertical-align:top;">
+          <div style="width:64px; height:64px; border-radius:50%; background-color:#162d50; border:1px solid #2a5298; margin:0 auto 16px; font-size:22px; font-weight:800; color:#7eb8e6; line-height:64px; text-align:center;">1</div>
+          <div style="font-size:13px; font-weight:700; color:#ffffff; margin-bottom:8px;">Create Project</div>
+          <p style="font-size:12px; color:#888899; line-height:1.5; margin:0;">Set up client, contract value, site manager, and timeline.</p>
+        </td>
+        <td width="25%" style="padding:0 12px; text-align:center; vertical-align:top;">
+          <div style="width:64px; height:64px; border-radius:50%; background-color:#0d2e2a; border:1px solid #00a58c; margin:0 auto 16px; font-size:22px; font-weight:800; color:#5eead4; line-height:64px; text-align:center;">2</div>
+          <div style="font-size:13px; font-weight:700; color:#ffffff; margin-bottom:8px;">Define BOQ &amp; Phases</div>
+          <p style="font-size:12px; color:#888899; line-height:1.5; margin:0;">Break into phases and build your Bill of Quantities.</p>
+        </td>
+        <td width="25%" style="padding:0 12px; text-align:center; vertical-align:top;">
+          <div style="width:64px; height:64px; border-radius:50%; background-color:#2a2000; border:1px solid #b57a1a; margin:0 auto 16px; font-size:22px; font-weight:800; color:#fcd34d; line-height:64px; text-align:center;">3</div>
+          <div style="font-size:13px; font-weight:700; color:#ffffff; margin-bottom:8px;">Track Daily</div>
+          <p style="font-size:12px; color:#888899; line-height:1.5; margin:0;">Submit DPRs, capture photos, log expenses every day.</p>
+        </td>
+        <td width="25%" style="padding:0 12px; text-align:center; vertical-align:top;">
+          <div style="width:64px; height:64px; border-radius:50%; background-color:#2a0a0a; border:1px solid #aa2020; margin:0 auto 16px; font-size:22px; font-weight:800; color:#fca5a5; line-height:64px; text-align:center;">4</div>
+          <div style="font-size:13px; font-weight:700; color:#ffffff; margin-bottom:8px;">Bill &amp; Report</div>
+          <p style="font-size:12px; color:#888899; line-height:1.5; margin:0;">Create RA billings, handle changes, generate PDFs.</p>
+        </td>
+      </tr>
+    </table>
+  </div>
 </div>
 
-<!-- 3. USER MANUAL -->
-<div style="background:#fff;border-radius:10px;padding:32px;margin-bottom:26px;box-shadow:0 1px 6px rgba(0,0,0,0.07)">
-    <h2 style="color:#0d1b2e;font-size:1.35rem;margin:0 0 6px 0;text-align:center">User Manual</h2>
-    <div style="width:50px;height:3px;background:#1a5276;margin:0 auto 10px auto;border-radius:2px"></div>
-    <p style="color:#5a6577;font-size:0.85rem;text-align:center;margin:0 0 24px 0">Step-by-step guide to get the most out of Construction Project Tracker</p>
-
-    <!-- 1 Installation -->
-    <div style="border:1px solid #e0e5ec;border-radius:8px;padding:20px;margin-bottom:14px">
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
-            <span style="min-width:28px;height:28px;background:#1a5276;color:#fff;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700">1</span>
-            <h3 style="color:#0d1b2e;font-size:1rem;margin:0">Installation</h3>
-        </div>
-        <ol style="color:#475569;font-size:0.85rem;line-height:1.7;margin:0;padding-left:18px">
-            <li>Download the module zip from the Odoo Apps Store.</li>
-            <li>Extract <b>vdm_construction_tracker</b> into your Odoo <b>addons</b> directory.</li>
-            <li>Restart the Odoo server.</li>
-            <li>Go to <b>Apps</b> &rarr; <b>Update Apps List</b>.</li>
-            <li>Search <b>Construction Project Tracker</b> &rarr; <b>Install</b>.</li>
-        </ol>
-        <div style="background:#e8f5e9;border:1px solid #c8e6c9;border-radius:6px;padding:10px 14px;margin-top:12px;font-size:0.82rem;color:#2e7d32">&#x2705; Dependencies (project, purchase, stock, account, hr, mail) install automatically.</div>
-    </div>
-
-    <!-- 2 Create Project -->
-    <div style="border:1px solid #e0e5ec;border-radius:8px;padding:20px;margin-bottom:14px">
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
-            <span style="min-width:28px;height:28px;background:#1a5276;color:#fff;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700">2</span>
-            <h3 style="color:#0d1b2e;font-size:1rem;margin:0">Create a Project</h3>
-        </div>
-        <ol style="color:#475569;font-size:0.85rem;line-height:1.7;margin:0;padding-left:18px">
-            <li><b>Construction</b> &rarr; <b>Projects</b> &rarr; <b>All Projects</b> &rarr; <b>New</b>.</li>
-            <li>Fill: <b>Project Name</b>, <b>Client</b>, <b>Site Manager</b>.</li>
-            <li>Set <b>Contract Value</b>, <b>Start Date</b>, <b>End Date</b>.</li>
-            <li>Choose <b>Project Type</b>: Residential, Commercial, Industrial, Infrastructure, Renovation.</li>
-            <li>Click <b>Confirm</b> to activate.</li>
-        </ol>
-        <div style="background:#e8f5e9;border:1px solid #c8e6c9;border-radius:6px;padding:10px 14px;margin-top:12px;font-size:0.82rem;color:#2e7d32">&#x2705; Auto-generated reference: PRJ-0001, PRJ-0002, etc.</div>
-    </div>
-
-    <!-- 3 BOQ -->
-    <div style="border:1px solid #e0e5ec;border-radius:8px;padding:20px;margin-bottom:14px">
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
-            <span style="min-width:28px;height:28px;background:#1a5276;color:#fff;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700">3</span>
-            <h3 style="color:#0d1b2e;font-size:1rem;margin:0">Set Up Bill of Quantities (BOQ)</h3>
-        </div>
-        <ol style="color:#475569;font-size:0.85rem;line-height:1.7;margin:0;padding-left:18px">
-            <li>From project, click <b>BOQ</b> smart button &rarr; <b>New</b>.</li>
-            <li>Add lines: <b>Description</b>, <b>Work Type</b>, <b>Unit</b>, <b>Qty</b>, <b>Rate</b>.</li>
-            <li>Amount auto-calculated (Qty &times; Rate).</li>
-            <li>Link lines to <b>Phases</b> for progress tracking.</li>
-            <li>Click <b>Approve</b> when finalized.</li>
-        </ol>
-        <div style="background:#e8f5e9;border:1px solid #c8e6c9;border-radius:6px;padding:10px 14px;margin-top:12px;font-size:0.82rem;color:#2e7d32">&#x2705; Create revisions of approved BOQs. Revision number auto-increments.</div>
-    </div>
-
-    <!-- 4 DPR -->
-    <div style="border:1px solid #e0e5ec;border-radius:8px;padding:20px;margin-bottom:14px">
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
-            <span style="min-width:28px;height:28px;background:#1a5276;color:#fff;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700">4</span>
-            <h3 style="color:#0d1b2e;font-size:1rem;margin:0">Daily Progress Reports (DPR)</h3>
-        </div>
-        <ol style="color:#475569;font-size:0.85rem;line-height:1.7;margin:0;padding-left:18px">
-            <li><b>Construction</b> &rarr; <b>Site Management</b> &rarr; <b>Daily Reports</b> &rarr; <b>New</b>.</li>
-            <li>Set <b>Date</b>, <b>Weather</b>, <b>Temperature</b>.</li>
-            <li>Describe <b>Work Completed</b> in rich text.</li>
-            <li>Enter <b>Labor</b>, <b>Materials</b>, <b>Machinery</b>.</li>
-            <li>Record <b>Safety Issues</b> and <b>Delay Reasons</b>.</li>
-            <li>Write <b>Next Day Plan</b>.</li>
-            <li>Select <b>Phases Worked Today</b> to link to phases.</li>
-            <li>Click <b>Submit</b> for approval.</li>
-        </ol>
-    </div>
-
-    <!-- 5 Photos -->
-    <div style="border:1px solid #e0e5ec;border-radius:8px;padding:20px;margin-bottom:14px">
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
-            <span style="min-width:28px;height:28px;background:#1a5276;color:#fff;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700">5</span>
-            <h3 style="color:#0d1b2e;font-size:1rem;margin:0">Site Photos with Geolocation</h3>
-        </div>
-        <ol style="color:#475569;font-size:0.85rem;line-height:1.7;margin:0;padding-left:18px">
-            <li>In a DPR, go to <b>Photos</b> tab &rarr; <b>Add a line</b>.</li>
-            <li>Upload photo, add <b>Caption</b>, select <b>Photo Type</b> (Progress, Quality, Safety, Issue, General).</li>
-            <li>Enter <b>Latitude</b> and <b>Longitude</b> for GPS tracking.</li>
-        </ol>
-    </div>
-
-    <!-- 6 Billing -->
-    <div style="border:1px solid #e0e5ec;border-radius:8px;padding:20px;margin-bottom:14px">
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
-            <span style="min-width:28px;height:28px;background:#1a5276;color:#fff;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700">6</span>
-            <h3 style="color:#0d1b2e;font-size:1rem;margin:0">RA Billing (Running Account)</h3>
-        </div>
-        <ol style="color:#475569;font-size:0.85rem;line-height:1.7;margin:0;padding-left:18px">
-            <li><b>Construction</b> &rarr; <b>Billing</b> &rarr; <b>RA Billing</b> &rarr; <b>New</b>.</li>
-            <li>Select project, enter <b>Billing Period</b>.</li>
-            <li>Add lines with descriptions, quantities, rates.</li>
-            <li>Set <b>Retention %</b> (default 5%), <b>Advance Recovery</b>.</li>
-            <li><b>Net Payable</b> auto-calculated.</li>
-            <li><b>Submit</b> &rarr; <b>Approve</b> &rarr; <b>Create Invoice</b>.</li>
-        </ol>
-        <div style="background:#e8f5e9;border:1px solid #c8e6c9;border-radius:6px;padding:10px 14px;margin-top:12px;font-size:0.82rem;color:#2e7d32">&#x2705; <b>Create Invoice</b> generates a customer invoice in Accounting automatically.</div>
-    </div>
-
-    <!-- 7 Change Orders -->
-    <div style="border:1px solid #e0e5ec;border-radius:8px;padding:20px;margin-bottom:14px">
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
-            <span style="min-width:28px;height:28px;background:#1a5276;color:#fff;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700">7</span>
-            <h3 style="color:#0d1b2e;font-size:1rem;margin:0">Change Orders</h3>
-        </div>
-        <ol style="color:#475569;font-size:0.85rem;line-height:1.7;margin:0;padding-left:18px">
-            <li><b>Construction</b> &rarr; <b>Billing</b> &rarr; <b>Change Orders</b> &rarr; <b>New</b>.</li>
-            <li>Describe the change and select <b>Reason</b> (Client Request, Design Change, Site Condition, Regulation, Error, Other).</li>
-            <li>Enter <b>Original Amount</b> and <b>Variation Amount</b>.</li>
-            <li><b>New Total</b> auto-calculated.</li>
-            <li><b>Submit</b> &rarr; <b>Approve</b> &rarr; <b>Implement</b>.</li>
-        </ol>
-        <div style="background:#fff3e0;border:1px solid #ffe0b2;border-radius:6px;padding:10px 14px;margin-top:12px;font-size:0.82rem;color:#e65100">&#x26A0;&#xFE0F; Pending change orders appear as alerts on the dashboard.</div>
-    </div>
-
-    <!-- 8 Subcontracts -->
-    <div style="border:1px solid #e0e5ec;border-radius:8px;padding:20px;margin-bottom:14px">
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
-            <span style="min-width:28px;height:28px;background:#1a5276;color:#fff;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700">8</span>
-            <h3 style="color:#0d1b2e;font-size:1rem;margin:0">Subcontractor Management</h3>
-        </div>
-        <ol style="color:#475569;font-size:0.85rem;line-height:1.7;margin:0;padding-left:18px">
-            <li><b>Construction</b> &rarr; <b>Subcontracts</b> &rarr; <b>New</b>.</li>
-            <li>Fill: <b>Subcontractor</b>, <b>Scope</b>, <b>Contract Value</b>, <b>Retention %</b>.</li>
-            <li><b>Activate</b> to start tracking.</li>
-            <li>Record measurements in <b>Measurements</b> tab.</li>
-            <li><b>Amount Paid</b> and <b>Remaining</b> auto-tracked.</li>
-        </ol>
-    </div>
-
-    <!-- 9 Dashboard -->
-    <div style="border:1px solid #e0e5ec;border-radius:8px;padding:20px;margin-bottom:14px">
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
-            <span style="min-width:28px;height:28px;background:#1a5276;color:#fff;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700">9</span>
-            <h3 style="color:#0d1b2e;font-size:1rem;margin:0">OWL 3 Dashboard</h3>
-        </div>
-        <ol style="color:#475569;font-size:0.85rem;line-height:1.7;margin:0;padding-left:18px">
-            <li><b>Construction</b> &rarr; <b>Dashboard</b>.</li>
-            <li><b>Stats cards</b>: Total Projects, Active, Contract Value, Avg Progress.</li>
-            <li><b>Quick Actions</b>: Jump to Projects, DPR, BOQ, Billing, Changes, Subcontracts.</li>
-            <li><b>Alerts</b>: Overdue projects and pending approvals highlighted.</li>
-            <li><b>Recent Projects</b> table with progress bars. Click to open.</li>
-        </ol>
-    </div>
-
-    <!-- 10 Reports -->
-    <div style="border:1px solid #e0e5ec;border-radius:8px;padding:20px;margin-bottom:14px">
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
-            <span style="min-width:28px;height:28px;background:#1a5276;color:#fff;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700">10</span>
-            <h3 style="color:#0d1b2e;font-size:1rem;margin:0">PDF Reports</h3>
-        </div>
-        <ul style="color:#475569;font-size:0.85rem;line-height:1.7;margin:0;padding-left:18px">
-            <li><b>BOQ Report</b>: Open BOQ &rarr; Print &rarr; BOQ Report</li>
-            <li><b>DPR Report</b>: Open DPR &rarr; Print &rarr; Daily Progress Report</li>
-            <li><b>RA Billing Report</b>: Open Billing &rarr; Print &rarr; RA Billing Report</li>
-        </ul>
-    </div>
-
-    <!-- 11 Tips -->
-    <div style="border:1px solid #e0e5ec;border-radius:8px;padding:20px;margin-bottom:14px">
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
-            <span style="min-width:28px;height:28px;background:#1a5276;color:#fff;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700">11</span>
-            <h3 style="color:#0d1b2e;font-size:1rem;margin:0">Tips &amp; Best Practices</h3>
-        </div>
-        <ul style="color:#475569;font-size:0.85rem;line-height:1.7;margin:0;padding-left:18px">
-            <li><b>Start with the Dashboard</b> &mdash; overview and alerts at a glance.</li>
-            <li><b>Submit DPRs daily</b> &mdash; consistent records prevent disputes.</li>
-            <li><b>Use phase weights</b> &mdash; assign weights for accurate progress %.</li>
-            <li><b>Link BOQ to phases</b> &mdash; auto-progress from work orders.</li>
-            <li><b>Capture photos regularly</b> &mdash; invaluable for disputes.</li>
-            <li><b>Review change orders weekly</b> &mdash; dashboard alerts you.</li>
-            <li><b>Use Print for PDFs</b> &mdash; ready for client meetings.</li>
-            <li><b>Multi-company</b> &mdash; each company sees only its projects.</li>
-        </ul>
-    </div>
+<!-- USER MANUAL -->
+<div style="padding:64px 40px; background-color:#f5f6fa; border-top:1px solid #e8eaf0;">
+  <div style="max-width:960px; margin:0 auto;">
+    <div style="font-size:11px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:#1a5276; margin-bottom:10px;">User Manual</div>
+    <h2 style="font-size:34px; font-weight:800; color:#0d1b2e; letter-spacing:-.02em; margin-bottom:12px;">Step-by-step guide</h2>
+    <p style="font-size:16px; color:#7a7f91; margin-bottom:40px; font-weight:300;">Everything you need to get started, from installation to daily usage.</p>
+    <table width="100%" cellpadding="0" cellspacing="0" style="border:1px solid #e8eaf0; border-radius:14px; background-color:#ffffff;">
+      <tr style="border-bottom:1px solid #e8eaf0;">
+        <td style="padding:24px 20px 24px 28px; vertical-align:top; width:60px;">
+          <div style="width:36px; height:36px; border-radius:50%; background-color:#0d1b2e; color:#ffffff; font-size:14px; font-weight:800; text-align:center; line-height:36px;">1</div>
+        </td>
+        <td style="padding:24px 28px 24px 0;">
+          <div style="font-size:15px; font-weight:700; color:#0d1b2e; margin-bottom:6px;">Install the module</div>
+          <p style="font-size:13px; color:#7a7f91; line-height:1.6; margin:0;">Copy <code style="background-color:#f0f1f5; color:#5046e4; font-size:12px; padding:1px 7px; border-radius:5px;">vdm_construction_tracker</code> to your addons path, restart Odoo, then go to <strong>Apps</strong> and click Install.</p>
+        </td>
+      </tr>
+      <tr style="border-bottom:1px solid #e8eaf0;">
+        <td style="padding:24px 20px 24px 28px; vertical-align:top;">
+          <div style="width:36px; height:36px; border-radius:50%; background-color:#0d1b2e; color:#ffffff; font-size:14px; font-weight:800; text-align:center; line-height:36px;">2</div>
+        </td>
+        <td style="padding:24px 28px 24px 0;">
+          <div style="font-size:15px; font-weight:700; color:#0d1b2e; margin-bottom:6px;">Create a Project</div>
+          <p style="font-size:13px; color:#7a7f91; line-height:1.6; margin:0;">Go to <strong>Construction &rarr; Projects &rarr; All Projects &rarr; New</strong>. Fill in: Project Name, Client, Site Manager, Contract Value, Start Date, End Date. Click <strong>Confirm</strong>.</p>
+        </td>
+      </tr>
+      <tr style="border-bottom:1px solid #e8eaf0;">
+        <td style="padding:24px 20px 24px 28px; vertical-align:top;">
+          <div style="width:36px; height:36px; border-radius:50%; background-color:#0d1b2e; color:#ffffff; font-size:14px; font-weight:800; text-align:center; line-height:36px;">3</div>
+        </td>
+        <td style="padding:24px 28px 24px 0;">
+          <div style="font-size:15px; font-weight:700; color:#0d1b2e; margin-bottom:6px;">Set Up BOQ &amp; Phases</div>
+          <p style="font-size:13px; color:#7a7f91; line-height:1.6; margin:0;">Click the <strong>BOQ</strong> smart button &rarr; <strong>New</strong>. Add lines with Description, Work Type, Unit, Qty, Rate. Link to phases for progress tracking. Click <strong>Approve</strong>.</p>
+        </td>
+      </tr>
+      <tr style="border-bottom:1px solid #e8eaf0;">
+        <td style="padding:24px 20px 24px 28px; vertical-align:top;">
+          <div style="width:36px; height:36px; border-radius:50%; background-color:#0d1b2e; color:#ffffff; font-size:14px; font-weight:800; text-align:center; line-height:36px;">4</div>
+        </td>
+        <td style="padding:24px 28px 24px 0;">
+          <div style="font-size:15px; font-weight:700; color:#0d1b2e; margin-bottom:6px;">Submit Daily Reports</div>
+          <p style="font-size:13px; color:#7a7f91; line-height:1.6; margin:0;">Go to <strong>Site Management &rarr; Daily Reports &rarr; New</strong>. Fill weather, work completed, labor, materials. Add photos with GPS. Click <strong>Submit</strong>.</p>
+        </td>
+      </tr>
+      <tr style="border-bottom:1px solid #e8eaf0;">
+        <td style="padding:24px 20px 24px 28px; vertical-align:top;">
+          <div style="width:36px; height:36px; border-radius:50%; background-color:#0d1b2e; color:#ffffff; font-size:14px; font-weight:800; text-align:center; line-height:36px;">5</div>
+        </td>
+        <td style="padding:24px 28px 24px 0;">
+          <div style="font-size:15px; font-weight:700; color:#0d1b2e; margin-bottom:6px;">Create RA Billing</div>
+          <p style="font-size:13px; color:#7a7f91; line-height:1.6; margin:0;">Go to <strong>Billing &rarr; RA Billing &rarr; New</strong>. Add lines, set retention %, advance recovery. <strong>Submit &rarr; Approve &rarr; Create Invoice</strong>.</p>
+        </td>
+      </tr>
+      <tr style="border-bottom:1px solid #e8eaf0;">
+        <td style="padding:24px 20px 24px 28px; vertical-align:top;">
+          <div style="width:36px; height:36px; border-radius:50%; background-color:#0d1b2e; color:#ffffff; font-size:14px; font-weight:800; text-align:center; line-height:36px;">6</div>
+        </td>
+        <td style="padding:24px 28px 24px 0;">
+          <div style="font-size:15px; font-weight:700; color:#0d1b2e; margin-bottom:6px;">Manage Change Orders</div>
+          <p style="font-size:13px; color:#7a7f91; line-height:1.6; margin:0;">Go to <strong>Billing &rarr; Change Orders &rarr; New</strong>. Describe change, select reason, enter amounts. <strong>Submit &rarr; Approve &rarr; Implement</strong>.</p>
+        </td>
+      </tr>
+      <tr style="border-bottom:1px solid #e8eaf0;">
+        <td style="padding:24px 20px 24px 28px; vertical-align:top;">
+          <div style="width:36px; height:36px; border-radius:50%; background-color:#0d1b2e; color:#ffffff; font-size:14px; font-weight:800; text-align:center; line-height:36px;">7</div>
+        </td>
+        <td style="padding:24px 28px 24px 0;">
+          <div style="font-size:15px; font-weight:700; color:#0d1b2e; margin-bottom:6px;">Track Subcontracts</div>
+          <p style="font-size:13px; color:#7a7f91; line-height:1.6; margin:0;">Go to <strong>Subcontracts &rarr; New</strong>. Fill subcontractor, scope, contract value, retention %. <strong>Activate</strong> and record measurements.</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="padding:24px 20px 24px 28px; vertical-align:top;">
+          <div style="width:36px; height:36px; border-radius:50%; background-color:#0d1b2e; color:#ffffff; font-size:14px; font-weight:800; text-align:center; line-height:36px;">8</div>
+        </td>
+        <td style="padding:24px 28px 24px 0;">
+          <div style="font-size:15px; font-weight:700; color:#0d1b2e; margin-bottom:6px;">Use the Dashboard</div>
+          <p style="font-size:13px; color:#7a7f91; line-height:1.6; margin:0;">Go to <strong>Construction &rarr; Dashboard</strong>. View stats, alerts for overdue projects, quick actions. Click any project to open.</p>
+        </td>
+      </tr>
+    </table>
+  </div>
 </div>
 
-<!-- 4. WHY CHOOSE US -->
-<div style="background:#fff;border-radius:10px;padding:32px;margin-bottom:26px;box-shadow:0 1px 6px rgba(0,0,0,0.07)">
-    <h2 style="color:#0d1b2e;font-size:1.35rem;margin:0 0 6px 0;text-align:center">Why Choose This Module?</h2>
-    <div style="width:50px;height:3px;background:#1a5276;margin:0 auto 28px auto;border-radius:2px"></div>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px">
-        <div style="text-align:center;padding:22px 14px;background:#f7f9fb;border:1px solid #e0e5ec;border-radius:8px">
-            <div style="font-size:1.8rem;margin-bottom:6px">&#x1F512;</div>
-            <h4 style="color:#0d1b2e;font-size:0.9rem;margin:0 0 5px 0">100% Secure</h4>
-            <p style="color:#5a6577;font-size:0.8rem;line-height:1.5;margin:0">No external APIs. All data stays on your server.</p>
-        </div>
-        <div style="text-align:center;padding:22px 14px;background:#f7f9fb;border:1px solid #e0e5ec;border-radius:8px">
-            <div style="font-size:1.8rem;margin-bottom:6px">&#x2699;&#xFE0F;</div>
-            <h4 style="color:#0d1b2e;font-size:0.9rem;margin:0 0 5px 0">Zero Dependencies</h4>
-            <p style="color:#5a6577;font-size:0.8rem;line-height:1.5;margin:0">Only standard Odoo modules. No third-party risks.</p>
-        </div>
-        <div style="text-align:center;padding:22px 14px;background:#f7f9fb;border:1px solid #e0e5ec;border-radius:8px">
-            <div style="font-size:1.8rem;margin-bottom:6px">&#x1F4E6;</div>
-            <h4 style="color:#0d1b2e;font-size:0.9rem;margin:0 0 5px 0">Odoo 19 Native</h4>
-            <p style="color:#5a6577;font-size:0.8rem;line-height:1.5;margin:0">OWL 3, &lt;list&gt; views, model_create_multi.</p>
-        </div>
-        <div style="text-align:center;padding:22px 14px;background:#f7f9fb;border:1px solid #e0e5ec;border-radius:8px">
-            <div style="font-size:1.8rem;margin-bottom:6px">&#x1F310;</div>
-            <h4 style="color:#0d1b2e;font-size:0.9rem;margin:0 0 5px 0">Multi-Language</h4>
-            <p style="color:#5a6577;font-size:0.8rem;line-height:1.5;margin:0">English, French, Arabic &mdash; fully translatable.</p>
-        </div>
-        <div style="text-align:center;padding:22px 14px;background:#f7f9fb;border:1px solid #e0e5ec;border-radius:8px">
-            <div style="font-size:1.8rem;margin-bottom:6px">&#x1F4F1;</div>
-            <h4 style="color:#0d1b2e;font-size:0.9rem;margin:0 0 5px 0">Mobile Friendly</h4>
-            <p style="color:#5a6577;font-size:0.8rem;line-height:1.5;margin:0">Responsive on tablets and phones for field use.</p>
-        </div>
-        <div style="text-align:center;padding:22px 14px;background:#f7f9fb;border:1px solid #e0e5ec;border-radius:8px">
-            <div style="font-size:1.8rem;margin-bottom:6px">&#x1F91D;</div>
-            <h4 style="color:#0d1b2e;font-size:0.9rem;margin:0 0 5px 0">Dedicated Support</h4>
-            <p style="color:#5a6577;font-size:0.8rem;line-height:1.5;margin:0">Direct email support. Response within 24h.</p>
-        </div>
-    </div>
+<!-- WHY CHOOSE US -->
+<div style="padding:64px 40px; background-color:#ffffff; border-top:1px solid #e8eaf0;">
+  <div style="max-width:960px; margin:0 auto;">
+    <div style="font-size:11px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:#1a5276; margin-bottom:10px;">Why Choose Us</div>
+    <h2 style="font-size:34px; font-weight:800; color:#0d1b2e; letter-spacing:-.02em; margin-bottom:12px;">Built for construction professionals</h2>
+    <p style="font-size:16px; color:#7a7f91; margin-bottom:40px; font-weight:300;">We understand the construction industry. This module is designed by experts who know what matters.</p>
+    <table width="100%" cellpadding="0" cellspacing="0">
+      <tr>
+        <td width="33%" style="padding:4px; vertical-align:top;">
+          <div style="border:1px solid #e8eaf0; border-radius:14px; padding:28px 24px; background-color:#fafbff; text-align:center;">
+            <div style="font-size:28px; margin-bottom:12px;">&#128274;</div>
+            <div style="font-size:15px; font-weight:700; color:#0d1b2e; margin-bottom:8px;">100% Secure</div>
+            <p style="font-size:13px; color:#7a7f91; line-height:1.6; margin:0;">No external APIs. All data stays on your server. Your project data stays yours.</p>
+          </div>
+        </td>
+        <td width="33%" style="padding:4px; vertical-align:top;">
+          <div style="border:1px solid #e8eaf0; border-radius:14px; padding:28px 24px; background-color:#fafbff; text-align:center;">
+            <div style="font-size:28px; margin-bottom:12px;">&#9881;&#65039;</div>
+            <div style="font-size:15px; font-weight:700; color:#0d1b2e; margin-bottom:8px;">Zero Dependencies</div>
+            <p style="font-size:13px; color:#7a7f91; line-height:1.6; margin:0;">Only standard Odoo modules. No third-party libraries, no compatibility risks.</p>
+          </div>
+        </td>
+        <td width="33%" style="padding:4px; vertical-align:top;">
+          <div style="border:1px solid #e8eaf0; border-radius:14px; padding:28px 24px; background-color:#fafbff; text-align:center;">
+            <div style="font-size:28px; margin-bottom:12px;">&#128230;</div>
+            <div style="font-size:15px; font-weight:700; color:#0d1b2e; margin-bottom:8px;">Odoo 19 Native</div>
+            <p style="font-size:13px; color:#7a7f91; line-height:1.6; margin:0;">OWL 3, &lt;list&gt; views, model_create_multi. Future-proof code.</p>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td width="33%" style="padding:4px; vertical-align:top;">
+          <div style="border:1px solid #e8eaf0; border-radius:14px; padding:28px 24px; background-color:#fafbff; text-align:center;">
+            <div style="font-size:28px; margin-bottom:12px;">&#127760;</div>
+            <div style="font-size:15px; font-weight:700; color:#0d1b2e; margin-bottom:8px;">Multi-Language</div>
+            <p style="font-size:13px; color:#7a7f91; line-height:1.6; margin:0;">English, French, Arabic &mdash; fully translatable via Odoo tools.</p>
+          </div>
+        </td>
+        <td width="33%" style="padding:4px; vertical-align:top;">
+          <div style="border:1px solid #e8eaf0; border-radius:14px; padding:28px 24px; background-color:#fafbff; text-align:center;">
+            <div style="font-size:28px; margin-bottom:12px;">&#128241;</div>
+            <div style="font-size:15px; font-weight:700; color:#0d1b2e; margin-bottom:8px;">Mobile Friendly</div>
+            <p style="font-size:13px; color:#7a7f91; line-height:1.6; margin:0;">Responsive views work on tablets and phones for field use.</p>
+          </div>
+        </td>
+        <td width="33%" style="padding:4px; vertical-align:top;">
+          <div style="border:1px solid #e8eaf0; border-radius:14px; padding:28px 24px; background-color:#fafbff; text-align:center;">
+            <div style="font-size:28px; margin-bottom:12px;">&#129309;</div>
+            <div style="font-size:15px; font-weight:700; color:#0d1b2e; margin-bottom:8px;">Dedicated Support</div>
+            <p style="font-size:13px; color:#7a7f91; line-height:1.6; margin:0;">Direct email support. Response within 24 hours.</p>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
 </div>
 
-<!-- 5. COMPATIBILITY -->
-<div style="background:#fff;border-radius:10px;padding:32px;margin-bottom:26px;box-shadow:0 1px 6px rgba(0,0,0,0.07)">
-    <h2 style="color:#0d1b2e;font-size:1.35rem;margin:0 0 6px 0;text-align:center">Compatibility</h2>
-    <div style="width:50px;height:3px;background:#1a5276;margin:0 auto 24px auto;border-radius:2px"></div>
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;text-align:center">
-        <div style="padding:10px;background:#e8f5e9;border-radius:6px;font-size:0.84rem;font-weight:500">&#x2705; Odoo 19 Community</div>
-        <div style="padding:10px;background:#e8f5e9;border-radius:6px;font-size:0.84rem;font-weight:500">&#x2705; Odoo 19 Enterprise</div>
-        <div style="padding:10px;background:#e8f5e9;border-radius:6px;font-size:0.84rem;font-weight:500">&#x2705; OWL 3</div>
-        <div style="padding:10px;background:#e8f5e9;border-radius:6px;font-size:0.84rem;font-weight:500">&#x2705; Multi-Company</div>
-        <div style="padding:10px;background:#e8f5e9;border-radius:6px;font-size:0.84rem;font-weight:500">&#x2705; Multi-Language</div>
-        <div style="padding:10px;background:#e8f5e9;border-radius:6px;font-size:0.84rem;font-weight:500">&#x2705; Mobile</div>
-        <div style="padding:10px;background:#e8f5e9;border-radius:6px;font-size:0.84rem;font-weight:500">&#x2705; Linux / Windows / macOS</div>
-        <div style="padding:10px;background:#e8f5e9;border-radius:6px;font-size:0.84rem;font-weight:500">&#x2705; PostgreSQL 12+</div>
-    </div>
+<!-- COMPATIBILITY -->
+<div style="padding:64px 40px; background-color:#f5f6fa; border-top:1px solid #e8eaf0;">
+  <div style="max-width:960px; margin:0 auto;">
+    <div style="font-size:11px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:#1a5276; margin-bottom:10px;">Compatibility</div>
+    <h2 style="font-size:34px; font-weight:800; color:#0d1b2e; letter-spacing:-.02em; margin-bottom:12px;">Works everywhere</h2>
+    <p style="font-size:16px; color:#7a7f91; margin-bottom:40px; font-weight:300;">Tested on Community and Enterprise. No platform restrictions.</p>
+    <table width="100%" cellpadding="0" cellspacing="0" style="background-color:#ffffff; border:1px solid #e8eaf0; border-radius:14px;">
+      <tr>
+        <td style="padding:16px 24px; border-bottom:1px solid #e8eaf0; width:50%;">
+          <span style="color:#22c55e; font-weight:700; font-size:14px;">&#10003;</span>
+          <span style="font-size:14px; color:#0d1b2e; font-weight:600; margin-left:8px;">Odoo 19 Community</span>
+        </td>
+        <td style="padding:16px 24px; border-bottom:1px solid #e8eaf0; width:50%;">
+          <span style="color:#22c55e; font-weight:700; font-size:14px;">&#10003;</span>
+          <span style="font-size:14px; color:#0d1b2e; font-weight:600; margin-left:8px;">Odoo 19 Enterprise</span>
+        </td>
+      </tr>
+      <tr>
+        <td style="padding:16px 24px; border-bottom:1px solid #e8eaf0; width:50%;">
+          <span style="color:#22c55e; font-weight:700; font-size:14px;">&#10003;</span>
+          <span style="font-size:14px; color:#0d1b2e; font-weight:600; margin-left:8px;">OWL 3 Frontend</span>
+        </td>
+        <td style="padding:16px 24px; border-bottom:1px solid #e8eaf0; width:50%;">
+          <span style="color:#22c55e; font-weight:700; font-size:14px;">&#10003;</span>
+          <span style="font-size:14px; color:#0d1b2e; font-weight:600; margin-left:8px;">Multi-Company</span>
+        </td>
+      </tr>
+      <tr>
+        <td style="padding:16px 24px; border-bottom:1px solid #e8eaf0; width:50%;">
+          <span style="color:#22c55e; font-weight:700; font-size:14px;">&#10003;</span>
+          <span style="font-size:14px; color:#0d1b2e; font-weight:600; margin-left:8px;">Multi-Language</span>
+        </td>
+        <td style="padding:16px 24px; border-bottom:1px solid #e8eaf0; width:50%;">
+          <span style="color:#22c55e; font-weight:700; font-size:14px;">&#10003;</span>
+          <span style="font-size:14px; color:#0d1b2e; font-weight:600; margin-left:8px;">Mobile Responsive</span>
+        </td>
+      </tr>
+      <tr>
+        <td style="padding:16px 24px; width:50%;">
+          <span style="color:#22c55e; font-weight:700; font-size:14px;">&#10003;</span>
+          <span style="font-size:14px; color:#0d1b2e; font-weight:600; margin-left:8px;">Linux / Windows / macOS</span>
+        </td>
+        <td style="padding:16px 24px; width:50%;">
+          <span style="color:#22c55e; font-weight:700; font-size:14px;">&#10003;</span>
+          <span style="font-size:14px; color:#0d1b2e; font-weight:600; margin-left:8px;">PostgreSQL 12+</span>
+        </td>
+      </tr>
+    </table>
+  </div>
 </div>
 
-<!-- 6. CHANGELOG -->
-<div style="background:#fff;border-radius:10px;padding:32px;margin-bottom:26px;box-shadow:0 1px 6px rgba(0,0,0,0.07)">
-    <h2 style="color:#0d1b2e;font-size:1.35rem;margin:0 0 6px 0;text-align:center">Changelog</h2>
-    <div style="width:50px;height:3px;background:#1a5276;margin:0 auto 24px auto;border-radius:2px"></div>
-    <div style="border-bottom:1px solid #e0e5ec;padding-bottom:14px;margin-bottom:14px">
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
-            <span style="background:#dbeafe;color:#1e40af;padding:3px 12px;border-radius:10px;font-size:0.8rem;font-weight:600">v19.0.1.0.0</span>
-            <span style="color:#94a3b8;font-size:0.8rem">July 2026</span>
+<!-- CHANGELOG -->
+<div style="padding:64px 40px; background-color:#ffffff; border-top:1px solid #e8eaf0;">
+  <div style="max-width:960px; margin:0 auto;">
+    <div style="font-size:11px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:#1a5276; margin-bottom:10px;">Changelog</div>
+    <h2 style="font-size:34px; font-weight:800; color:#0d1b2e; letter-spacing:-.02em; margin-bottom:12px;">Version history</h2>
+    <p style="font-size:16px; color:#7a7f91; margin-bottom:40px; font-weight:300;">What's included in each release.</p>
+    <div style="border:1px solid #e8eaf0; border-radius:14px; background-color:#ffffff; padding:24px 28px;">
+      <div style="margin-bottom:16px;">
+        <span style="background-color:#dbeafe; color:#1e40af; padding:4px 12px; border-radius:100px; font-size:12px; font-weight:700;">v19.0.1.0.0</span>
+        <span style="color:#94a3b8; font-size:12px; margin-left:10px;">July 2026</span>
+      </div>
+      <ul style="font-size:13px; color:#7a7f91; padding-left:20px; margin:0; line-height:2;">
+        <li>Initial release for Odoo 19</li>
+        <li>Project &amp; Phase management</li>
+        <li>Bill of Quantities with revision tracking</li>
+        <li>Daily Progress Reports with photo support</li>
+        <li>RA Billing with retention and advance recovery</li>
+        <li>Change Order management with approval workflow</li>
+        <li>Subcontractor management with measurement book</li>
+        <li>OWL 3 interactive dashboard</li>
+        <li>PDF reports for BOQ, DPR, and billing</li>
+        <li>Multi-company and multi-language support</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div style="padding:64px 40px; background-color:#f5f6fa; border-top:1px solid #e8eaf0;">
+  <div style="max-width:960px; margin:0 auto;">
+    <div style="font-size:11px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:#1a5276; margin-bottom:10px;">FAQ</div>
+    <h2 style="font-size:34px; font-weight:800; color:#0d1b2e; letter-spacing:-.02em; margin-bottom:12px;">Common questions</h2>
+    <p style="font-size:16px; color:#7a7f91; margin-bottom:40px; font-weight:300;">Everything you need to know before installing.</p>
+    <table width="100%" cellpadding="0" cellspacing="0">
+      <tr><td style="padding-bottom:12px;">
+        <div style="border:1px solid #e8eaf0; border-radius:14px; background-color:#ffffff;">
+          <div style="padding:18px 24px; border-bottom:1px solid #e8eaf0;"><strong style="font-size:15px; color:#0d1b2e;">Does this module work with Community edition?</strong></div>
+          <div style="padding:16px 24px; font-size:14px; color:#7a7f91; line-height:1.7;">Yes. The module works on both Odoo 19 Community and Enterprise editions. No Enterprise-specific features are required.</div>
         </div>
-        <ul style="margin:0;padding-left:18px;color:#475569;font-size:0.85rem;line-height:1.8">
-            <li>Initial release for Odoo 19</li>
-            <li>Project &amp; Phase management</li>
-            <li>Bill of Quantities with revision tracking</li>
-            <li>Daily Progress Reports with photo support</li>
-            <li>RA Billing with retention and advance recovery</li>
-            <li>Change Order management with approval workflow</li>
-            <li>Subcontractor management with measurement book</li>
-            <li>OWL 3 interactive dashboard</li>
-            <li>PDF reports for BOQ, DPR, and billing</li>
-            <li>Multi-company and multi-language support</li>
-        </ul>
-    </div>
+      </td></tr>
+      <tr><td style="padding-bottom:12px;">
+        <div style="border:1px solid #e8eaf0; border-radius:14px; background-color:#ffffff;">
+          <div style="padding:18px 24px; border-bottom:1px solid #e8eaf0;"><strong style="font-size:15px; color:#0d1b2e;">Is my project data secure?</strong></div>
+          <div style="padding:16px 24px; font-size:14px; color:#7a7f91; line-height:1.7;">Absolutely. No external APIs are called. All data stays on your Odoo server. The module has zero external dependencies.</div>
+        </div>
+      </td></tr>
+      <tr><td style="padding-bottom:12px;">
+        <div style="border:1px solid #e8eaf0; border-radius:14px; background-color:#ffffff;">
+          <div style="padding:18px 24px; border-bottom:1px solid #e8eaf0;"><strong style="font-size:15px; color:#0d1b2e;">Can I customize the module?</strong></div>
+          <div style="padding:16px 24px; font-size:14px; color:#7a7f91; line-height:1.7;">Yes. The module follows standard Odoo conventions. You can extend models, add views, create custom reports, and adapt it to your workflow.</div>
+        </div>
+      </td></tr>
+      <tr><td style="padding-bottom:12px;">
+        <div style="border:1px solid #e8eaf0; border-radius:14px; background-color:#ffffff;">
+          <div style="padding:18px 24px; border-bottom:1px solid #e8eaf0;"><strong style="font-size:15px; color:#0d1b2e;">How many users can use it simultaneously?</strong></div>
+          <div style="padding:16px 24px; font-size:14px; color:#7a7f91; line-height:1.7;">All users with the Construction User role can use the module. Concurrency is limited only by your Odoo server capacity.</div>
+        </div>
+      </td></tr>
+      <tr><td style="padding-bottom:12px;">
+        <div style="border:1px solid #e8eaf0; border-radius:14px; background-color:#ffffff;">
+          <div style="padding:18px 24px; border-bottom:1px solid #e8eaf0;"><strong style="font-size:15px; color:#0d1b2e;">What if I need support?</strong></div>
+          <div style="padding:16px 24px; font-size:14px; color:#7a7f91; line-height:1.7;">Contact us at <a href="mailto:imazighenapps@gmail.com" style="color:#1a5276; text-decoration:none;">imazighenapps@gmail.com</a>. We provide installation help, configuration assistance, and bug fixes.</div>
+        </div>
+      </td></tr>
+      <tr><td>
+        <div style="border:1px solid #e8eaf0; border-radius:14px; background-color:#ffffff;">
+          <div style="padding:18px 24px; border-bottom:1px solid #e8eaf0;"><strong style="font-size:15px; color:#0d1b2e;">Questions?</strong></div>
+          <div style="padding:16px 24px; font-size:14px; color:#000000; line-height:1.7;"><a href="mailto:imazighenapps@gmail.com" style="color:#1a5276; text-decoration:none;">imazighenapps@gmail.com</a></div>
+        </div>
+      </td></tr>
+    </table>
+  </div>
 </div>
 
-<!-- 7. SUPPORT -->
-<div style="background:#fff;border-radius:10px;padding:32px;margin-bottom:26px;box-shadow:0 1px 6px rgba(0,0,0,0.07);text-align:center">
-    <h2 style="color:#0d1b2e;font-size:1.35rem;margin:0 0 6px 0">Support</h2>
-    <div style="width:50px;height:3px;background:#1a5276;margin:0 auto 18px auto;border-radius:2px"></div>
-    <p style="color:#475569;font-size:0.9rem;margin:0 0 20px 0">Fast, reliable support for installation, configuration, and any questions.</p>
-    <div style="display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-bottom:18px">
-        <a href="mailto:imazighenapps@gmail.com" style="display:inline-flex;align-items:center;gap:8px;padding:10px 22px;background:#1a5276;color:#fff;text-decoration:none;border-radius:6px;font-size:0.85rem;font-weight:500">&#x2709;&#xFE0F; Email Support</a>
-        <a href="mailto:imazighenapps@gmail.com" style="display:inline-flex;align-items:center;gap:8px;padding:10px 22px;background:#1a5276;color:#fff;text-decoration:none;border-radius:6px;font-size:0.85rem;font-weight:500">&#x1F4DD; Request Feature</a>
-        <a href="mailto:imazighenapps@gmail.com" style="display:inline-flex;align-items:center;gap:8px;padding:10px 22px;background:#1a5276;color:#fff;text-decoration:none;border-radius:6px;font-size:0.85rem;font-weight:500">&#x1F41B; Report Bug</a>
-    </div>
-    <div style="padding:12px;background:#f1f5f9;border-radius:6px;font-size:0.82rem;color:#5a6577">
-        Developed by <b style="color:#0d1b2e">Farid SLIMANI</b> &bull; <a href="mailto:imazighenapps@gmail.com" style="color:#1a5276;text-decoration:none">imazighenapps@gmail.com</a>
-    </div>
-</div>
-
-<!-- 8. CTA -->
-<div style="background:#0d1b2e;border-radius:10px;padding:45px 35px;text-align:center">
-    <h2 style="color:#fff;font-size:1.6rem;margin:0 0 8px 0">Ready to Build Better?</h2>
-    <p style="color:rgba(255,255,255,0.8);font-size:1rem;margin:0 0 24px 0">Start managing your construction projects professionally with Odoo 19.</p>
-    <a href="https://apps.odoo.com" style="display:inline-block;padding:12px 36px;background:#fff;color:#0d1b2e;text-decoration:none;border-radius:6px;font-weight:700;font-size:0.95rem" target="_blank">Get Started Now</a>
+<!-- FOOTER -->
+<div style="background-color:#0d1b2e; text-align:center; padding:28px 40px; font-size:13px; color:#888899;">
+  <strong style="color:#ccccdd;">Construction Project Tracker</strong> &mdash; Odoo 19 &middot; v19.0.1.0.0 &middot; LGPL-3 &middot; Compatible with Community &amp; Enterprise
 </div>
 
 </div>
