@@ -1,6 +1,6 @@
 {
     'name': 'ESG Carbon Tracker',
-    'version': '19.0.1.0.0',
+    'version': '18.0.1.0.0',
     'summary': 'Advanced GHG Protocol carbon accounting with Scope 1-3 tracking, CSRD/ESRS E1 compliance, and reduction targets',
     'description': """
         ESG Carbon Tracker for Odoo 19
