@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Project List View -->
+    <record id="construction_project_view_list" model="ir.ui.view">
+        <field name="name">construction.project.list</field>
+        <field name="model">construction.project</field>
+        <field name="arch" type="xml">
+            <list string="Construction Projects">
+                <field name="reference"/>
+                <field name="name"/>
+                <field name="client_id"/>
+                <field name="project_type"/>
+                <field name="contract_value"/>
+                <field name="start_date"/>
+                <field name="end_date"/>
+                <field name="progress" widget="progressbar"/>
+                <field name="state" widget="badge" decoration-success="state in ('in_progress','completed')" decoration-warning="state == 'on_hold'" decoration-danger="state == 'cancelled'"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Project Form View -->
+    <record id="construction_project_view_form" model="ir.ui.view">
+        <field name="name">construction.project.form</field>
+        <field name="model">construction.project</field>
+        <field name="arch" type="xml">
+            <form string="Construction Project">
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_phases" type="object" class="oe_stat_button" icon="fa-sitemap">
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_value"><field name="phase_count"/></span>
+                                <span class="o_stat_text">Phases</span>
+                            </div>
+                        </button>
+                        <button name="action_view_boq" type="object" class="oe_stat_button" icon="fa-list-ol">
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_value"><field name="boq_count"/></span>
+                                <span class="o_stat_text">BOQ</span>
+                            </div>
+                        </button>
+                        <button name="action_view_work_orders" type="object" class="oe_stat_button" icon="fa-tasks">
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_value"><field name="work_order_count"/></span>
+                                <span class="o_stat_text">Work Orders</span>
+                            </div>
+                        </button>
+                        <button name="action_view_diaries" type="object" class="oe_stat_button" icon="fa-calendar">
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_value"><field name="diary_count"/></span>
+                                <span class="o_stat_text">DPR</span>
+                            </div>
+                        </button>
+                        <button name="action_view_billing" type="object" class="oe_stat_button" icon="fa-money">
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_value"><field name="billing_count"/></span>
+                                <span class="o_stat_text">Billing</span>
+                            </div>
+                        </button>
+                        <button name="action_view_change_orders" type="object" class="oe_stat_button" icon="fa-exchange">
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_value"><field name="change_order_count"/></span>
+                                <span class="o_stat_text">Change Orders</span>
+                            </div>
+                        </button>
+                        <button name="action_view_subcontracts" type="object" class="oe_stat_button" icon="fa-users">
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_value"><field name="subcontract_count"/></span>
+                                <span class="o_stat_text">Subcontracts</span>
+                            </div>
+                        </button>
+                        <button name="action_view_photos" type="object" class="oe_stat_button" icon="fa-camera">
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_value"><field name="photo_count"/></span>
+                                <span class="o_stat_text">Photos</span>
+                            </div>
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1>
+                            <field name="name" placeholder="Project Name"/>
+                        </h1>
+                    </div>
+                    <widget name="web_ribbon" title="Cancelled" bg_color="bg-danger" invisible="state != 'cancelled'"/>
+                    <group>
+                        <group>
+                            <field name="reference"/>
+                            <field name="client_id"/>
+                            <field name="site_manager_id"/>
+                            <field name="project_type"/>
+                        </group>
+                        <group>
+                            <field name="contract_value"/>
+                            <field name="currency_id" invisible="1"/>
+                            <field name="start_date"/>
+                            <field name="end_date"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Progress" name="progress">
+                            <group>
+                                <field name="progress" widget="progressbar"/>
+                            </group>
+                            <field name="phase_ids" readonly="state not in ('confirmed','in_progress')"/>
+                        </page>
+                        <page string="Settings" name="settings">
+                            <group>
+                                <field name="color"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!-- Project Search View -->
+    <record id="construction_project_view_search" model="ir.ui.view">
+        <field name="name">construction.project.search</field>
+        <field name="model">construction.project</field>
+        <field name="arch" type="xml">
+            <search string="Search Projects">
+                <field name="name"/>
+                <field name="reference"/>
+                <field name="client_id"/>
+                <field name="site_manager_id"/>
+                <filter name="filter_in_progress" string="In Progress" domain="[('state', '=', 'in_progress')]"/>
+                <filter name="filter_draft" string="Draft" domain="[('state', '=', 'draft')]"/>
+                <filter name="filter_completed" string="Completed" domain="[('state', '=', 'completed')]"/>
+                <group expand="0" string="Group By">
+                    <filter name="group_state" string="Status" context="{'group_by': 'state'}"/>
+                    <filter name="group_client" string="Client" context="{'group_by': 'client_id'}"/>
+                    <filter name="group_type" string="Project Type" context="{'group_by': 'project_type'}"/>
+                    <filter name="group_manager" string="Site Manager" context="{'group_by': 'site_manager_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Project Action -->
+    <record id="action_construction_project" model="ir.actions.act_window">
+        <field name="name">Projects</field>
+        <field name="res_model">construction.project</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="construction_project_view_search"/>
+        <field name="context">{'search_default_filter_in_progress': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first construction project
+            </p>
+            <p>
+                Track your construction projects with BOQ, DPR, billing, and more.
+            </p>
+        </field>
+    </record>
+</odoo>

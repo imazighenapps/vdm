@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_construction_project_user,construction.project.user,model_construction_project,group_construction_user,1,1,1,0
+access_construction_project_manager,construction.project.manager,model_construction_project,group_construction_manager,1,1,1,1
+access_construction_phase_user,construction.phase.user,model_construction_phase,group_construction_user,1,1,1,0
+access_construction_phase_manager,construction.phase.manager,model_construction_phase,group_construction_manager,1,1,1,1
+access_construction_work_order_user,construction.work.order.user,model_construction_work_order,group_construction_user,1,1,1,0
+access_construction_work_order_manager,construction.work.order.manager,model_construction_work_order,group_construction_manager,1,1,1,1
+access_construction_expense_user,construction.expense.user,model_construction_expense,group_construction_user,1,1,1,0
+access_construction_expense_manager,construction.expense.manager,model_construction_expense,group_construction_manager,1,1,1,1

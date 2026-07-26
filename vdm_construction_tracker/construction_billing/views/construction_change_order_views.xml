@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Change Order List View -->
+    <record id="construction_change_order_view_list" model="ir.ui.view">
+        <field name="name">construction.change.order.list</field>
+        <field name="model">construction.change.order</field>
+        <field name="arch" type="xml">
+            <list string="Change Orders">
+                <field name="name"/>
+                <field name="project_id"/>
+                <field name="reason"/>
+                <field name="original_amount"/>
+                <field name="variation_amount"/>
+                <field name="new_total"/>
+                <field name="state" widget="badge" decoration-success="state == 'approved'" decoration-danger="state == 'rejected'"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Change Order Form View -->
+    <record id="construction_change_order_view_form" model="ir.ui.view">
+        <field name="name">construction.change.order.form</field>
+        <field name="model">construction.change.order</field>
+        <field name="arch" type="xml">
+            <form string="Change Order">
+                <header>
+                    <button name="action_submit" type="object" class="oe_highlight" string="Submit" invisible="state != 'draft'"/>
+                    <button name="action_approve" type="object" class="oe_highlight" string="Approve" invisible="state != 'submitted'" groups="construction_core.group_construction_manager"/>
+                    <button name="action_reject" type="object" string="Reject" invisible="state != 'submitted'" groups="construction_core.group_construction_manager" class="btn-danger"/>
+                    <button name="action_implement" type="object" class="oe_highlight" string="Implement" invisible="state != 'approved'"/>
+                    <button name="action_draft" type="object" string="Reset to Draft" invisible="state not in ('submitted','approved','rejected')"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1>
+                            <field name="name" placeholder="Change Order Reference"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="project_id"/>
+                            <field name="reason"/>
+                            <field name="requested_by"/>
+                            <field name="boq_line_id"/>
+                        </group>
+                        <group>
+                            <field name="original_amount"/>
+                            <field name="variation_amount"/>
+                            <field name="new_total"/>
+                            <field name="currency_id" invisible="1"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="approved_by"/>
+                            <field name="approval_date"/>
+                            <field name="implementation_date"/>
+                        </group>
+                    </group>
+                    <field name="description" placeholder="Description of change..."/>
+                    <field name="notes" placeholder="Internal notes..." invisible="not notes"/>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!-- Change Order Search View -->
+    <record id="construction_change_order_view_search" model="ir.ui.view">
+        <field name="name">construction.change.order.search</field>
+        <field name="model">construction.change.order</field>
+        <field name="arch" type="xml">
+            <search string="Search Change Orders">
+                <field name="name"/>
+                <field name="project_id"/>
+                <field name="reason"/>
+                <group expand="0" string="Group By">
+                    <filter name="group_project" string="Project" context="{'group_by': 'project_id'}"/>
+                    <filter name="group_reason" string="Reason" context="{'group_by': 'reason'}"/>
+                    <filter name="group_state" string="Status" context="{'group_by': 'state'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Change Order Action -->
+    <record id="action_construction_change_order" model="ir.actions.act_window">
+        <field name="name">Change Orders</field>
+        <field name="res_model">construction.change.order</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="construction_change_order_view_search"/>
+    </record>
+</odoo>

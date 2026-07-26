@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Site Photo List View -->
+    <record id="construction_site_photo_view_list" model="ir.ui.view">
+        <field name="name">construction.site.photo.list</field>
+        <field name="model">construction.site.photo</field>
+        <field name="arch" type="xml">
+            <list string="Site Photos">
+                <field name="image_medium" widget="image"/>
+                <field name="name"/>
+                <field name="project_id"/>
+                <field name="diary_id"/>
+                <field name="phase_id"/>
+                <field name="photo_type" widget="badge"/>
+                <field name="photo_date"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Site Photo Form View -->
+    <record id="construction_site_photo_view_form" model="ir.ui.view">
+        <field name="name">construction.site.photo.form</field>
+        <field name="model">construction.site.photo</field>
+        <field name="arch" type="xml">
+            <form string="Site Photo">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="project_id"/>
+                            <field name="diary_id"/>
+                            <field name="phase_id"/>
+                            <field name="photo_type"/>
+                        </group>
+                        <group>
+                            <field name="photo_date"/>
+                            <field name="latitude"/>
+                            <field name="longitude"/>
+                            <field name="caption"/>
+                        </group>
+                    </group>
+                    <field name="image" widget="image" class="oe_avatar"/>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Site Photo Search View -->
+    <record id="construction_site_photo_view_search" model="ir.ui.view">
+        <field name="name">construction.site.photo.search</field>
+        <field name="model">construction.site.photo</field>
+        <field name="arch" type="xml">
+            <search string="Search Photos">
+                <field name="name"/>
+                <field name="project_id"/>
+                <field name="diary_id"/>
+                <group expand="0" string="Group By">
+                    <filter name="group_project" string="Project" context="{'group_by': 'project_id'}"/>
+                    <filter name="group_type" string="Photo Type" context="{'group_by': 'photo_type'}"/>
+                    <filter name="group_date" string="Date" context="{'group_by': 'photo_date:month'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Site Photo Action -->
+    <record id="action_construction_site_photo" model="ir.actions.act_window">
+        <field name="name">Site Photos</field>
+        <field name="res_model">construction.site.photo</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="construction_site_photo_view_search"/>
+    </record>
+</odoo>

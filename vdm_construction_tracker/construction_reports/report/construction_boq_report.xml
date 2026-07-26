@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_construction_boq">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2>Bill of Quantities</h2>
+                        <div class="row mb32">
+                            <div class="col-6">
+                                <strong>Reference:</strong> <span t-field="doc.name"/><br/>
+                                <strong>Project:</strong> <span t-field="doc.project_id"/><br/>
+                                <strong>Revision:</strong> <span t-field="doc.revision"/>
+                            </div>
+                            <div class="col-6 text-right">
+                                <strong>Status:</strong> <span t-field="doc.state"/><br/>
+                                <strong>Date:</strong> <span t-field="doc.create_date" t-options="{'widget': 'date'}"/>
+                            </div>
+                        </div>
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th>Item</th>
+                                    <th>Description</th>
+                                    <th>Work Type</th>
+                                    <th class="text-right">Qty</th>
+                                    <th>Unit</th>
+                                    <th class="text-right">Rate</th>
+                                    <th class="text-right">Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="doc.line_ids" t-as="line">
+                                    <tr>
+                                        <td><span t-field="line.item_code"/></td>
+                                        <td><span t-field="line.name"/></td>
+                                        <td><span t-field="line.work_type"/></td>
+                                        <td class="text-right"><span t-field="line.quantity"/></td>
+                                        <td><span t-field="line.uom_id"/></td>
+                                        <td class="text-right"><span t-field="line.unit_rate"/></td>
+                                        <td class="text-right"><span t-field="line.amount"/></td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                            <tfoot>
+                                <tr class="active">
+                                    <td colspan="6"><strong>Total</strong></td>
+                                    <td class="text-right"><strong><span t-field="doc.total_amount"/></strong></td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

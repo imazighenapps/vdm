@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_construction_billing">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2>Running Account Billing</h2>
+                        <div class="row mb32">
+                            <div class="col-6">
+                                <strong>Reference:</strong> <span t-field="doc.name"/><br/>
+                                <strong>Project:</strong> <span t-field="doc.project_id"/><br/>
+                                <strong>Period:</strong> <span t-field="doc.period"/>
+                            </div>
+                            <div class="col-6 text-right">
+                                <strong>Date:</strong> <span t-field="doc.billing_date"/><br/>
+                                <strong>Status:</strong> <span t-field="doc.state"/>
+                            </div>
+                        </div>
+
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th>Description</th>
+                                    <th>Phase</th>
+                                    <th class="text-right">Qty</th>
+                                    <th class="text-right">Rate</th>
+                                    <th class="text-right">Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="doc.bill_line_ids" t-as="line">
+                                    <tr>
+                                        <td><span t-field="line.name"/></td>
+                                        <td><span t-field="line.phase_id"/></td>
+                                        <td class="text-right"><span t-field="line.quantity"/></td>
+                                        <td class="text-right"><span t-field="line.unit_rate"/></td>
+                                        <td class="text-right"><span t-field="line.amount"/></td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                            <tfoot>
+                                <tr class="active">
+                                    <td colspan="4"><strong>Total Amount</strong></td>
+                                    <td class="text-right"><strong><span t-field="doc.total_amount"/></strong></td>
+                                </tr>
+                            </tfoot>
+                        </table>
+
+                        <div class="row mt32">
+                            <div class="col-6 offset-6">
+                                <table class="table table-condensed">
+                                    <tr>
+                                        <td>Previous Bill Amount:</td>
+                                        <td class="text-right"><span t-field="doc.previous_bill_amount"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Retention (<span t-field="doc.retention_pct"/>%):</td>
+                                        <td class="text-right"><span t-field="doc.retention_amount"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Advance Recovery:</td>
+                                        <td class="text-right"><span t-field="doc.advance_recovery"/></td>
+                                    </tr>
+                                    <tr class="active">
+                                        <td><strong>Net Payable:</strong></td>
+                                        <td class="text-right"><strong><span t-field="doc.net_payable"/></strong></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

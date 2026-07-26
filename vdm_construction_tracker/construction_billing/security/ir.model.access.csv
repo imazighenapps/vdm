@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_construction_change_order_user,construction.change.order.user,model_construction_change_order,group_construction_user,1,1,1,0
+access_construction_change_order_manager,construction.change.order.manager,model_construction_change_order,group_construction_manager,1,1,1,1
+access_construction_ra_billing_user,construction.ra.billing.user,model_construction_ra_billing,group_construction_user,1,1,1,0
+access_construction_ra_billing_manager,construction.ra.billing.manager,model_construction_ra_billing,group_construction_manager,1,1,1,1
+access_construction_ra_billing_line_user,construction.ra.billing.line.user,model_construction_ra_billing_line,group_construction_user,1,1,1,0
+access_construction_ra_billing_line_manager,construction.ra.billing.line.manager,model_construction_ra_billing_line,group_construction_manager,1,1,1,1

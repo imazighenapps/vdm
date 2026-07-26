@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Top Menu -->
+    <menuitem
+        id="menu_construction_root"
+        name="Construction"
+        web_icon="vdm_construction_tracker,static/description/icon.png"
+        sequence="45"/>
+
+    <!-- Dashboard Menu -->
+    <menuitem
+        id="menu_construction_dashboard"
+        name="Dashboard"
+        parent="menu_construction_root"
+        action="action_construction_dashboard"
+        sequence="5"/>
+
+    <!-- Projects Menu -->
+    <menuitem
+        id="menu_construction_project"
+        name="Projects"
+        parent="menu_construction_root"
+        sequence="10"/>
+
+    <menuitem
+        id="menu_construction_project_list"
+        name="All Projects"
+        parent="menu_construction_project"
+        action="action_construction_project"
+        sequence="10"/>
+
+    <menuitem
+        id="menu_construction_project_phases"
+        name="Phases"
+        parent="menu_construction_project"
+        action="action_construction_phase"
+        sequence="20"/>
+
+    <!-- BOQ Menu -->
+    <menuitem
+        id="menu_construction_boq"
+        name="Bill of Quantities"
+        parent="menu_construction_root"
+        sequence="20"/>
+
+    <menuitem
+        id="menu_construction_boq_list"
+        name="All BOQs"
+        parent="menu_construction_boq"
+        action="action_construction_boq"
+        sequence="10"/>
+
+    <!-- Site Menu -->
+    <menuitem
+        id="menu_construction_site"
+        name="Site Management"
+        parent="menu_construction_root"
+        sequence="30"/>
+
+    <menuitem
+        id="menu_construction_diary_list"
+        name="Daily Reports"
+        parent="menu_construction_site"
+        action="action_construction_site_diary"
+        sequence="10"/>
+
+    <menuitem
+        id="menu_construction_photo_list"
+        name="Site Photos"
+        parent="menu_construction_site"
+        action="action_construction_site_photo"
+        sequence="20"/>
+
+    <!-- Billing Menu -->
+    <menuitem
+        id="menu_construction_billing"
+        name="Billing"
+        parent="menu_construction_root"
+        sequence="40"/>
+
+    <menuitem
+        id="menu_construction_change_order_list"
+        name="Change Orders"
+        parent="menu_construction_billing"
+        action="action_construction_change_order"
+        sequence="10"/>
+
+    <menuitem
+        id="menu_construction_ra_billing_list"
+        name="RA Billing"
+        parent="menu_construction_billing"
+        action="action_construction_ra_billing"
+        sequence="20"/>
+
+    <!-- Subcontract Menu -->
+    <menuitem
+        id="menu_construction_subcontract"
+        name="Subcontracts"
+        parent="menu_construction_root"
+        sequence="50"/>
+
+    <menuitem
+        id="menu_construction_subcontract_list"
+        name="All Subcontracts"
+        parent="menu_construction_subcontract"
+        action="action_construction_subcontract"
+        sequence="10"/>
+
+    <!-- Reporting Menu -->
+    <menuitem
+        id="menu_construction_reporting"
+        name="Reporting"
+        parent="menu_construction_root"
+        sequence="60"/>
+
+    <menuitem
+        id="menu_construction_work_order_list"
+        name="Work Orders"
+        parent="menu_construction_site"
+        action="action_construction_work_order"
+        sequence="30"/>
+
+    <!-- Expenses Menu -->
+    <menuitem
+        id="menu_construction_expense_list"
+        name="Expenses"
+        parent="menu_construction_billing"
+        action="action_construction_expense"
+        sequence="30"/>
+
+    <menuitem
+        id="menu_construction_configuration"
+        name="Configuration"
+        parent="menu_construction_root"
+        sequence="70"
+        groups="group_construction_manager"/>
+</odoo>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- BOQ Report -->
+        <record id="action_report_construction_boq" model="ir.actions.report">
+            <field name="name">BOQ Report</field>
+            <field name="model">construction.boq</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">vdm_construction_tracker.report_construction_boq</field>
+            <field name="report_file">vdm_construction_tracker.report_construction_boq</field>
+            <field name="binding_model_id" ref="model_construction_boq"/>
+            <field name="binding_type">report</field>
+        </record>
+
+        <!-- DPR Report -->
+        <record id="action_report_construction_dpr" model="ir.actions.report">
+            <field name="name">Daily Progress Report</field>
+            <field name="model">construction.site.diary</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">vdm_construction_tracker.report_construction_dpr</field>
+            <field name="report_file">vdm_construction_tracker.report_construction_dpr</field>
+            <field name="binding_model_id" ref="model_construction_site_diary"/>
+            <field name="binding_type">report</field>
+        </record>
+
+        <!-- RA Billing Report -->
+        <record id="action_report_construction_billing" model="ir.actions.report">
+            <field name="name">RA Billing Report</field>
+            <field name="model">construction.ra.billing</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">vdm_construction_tracker.report_construction_billing</field>
+            <field name="report_file">vdm_construction_tracker.report_construction_billing</field>
+            <field name="binding_model_id" ref="model_construction_ra_billing"/>
+            <field name="binding_type">report</field>
+        </record>
+    </data>
+</odoo>

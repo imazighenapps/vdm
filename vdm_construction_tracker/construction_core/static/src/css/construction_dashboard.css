@@ -1,0 +1,60 @@
+.o_construction_dashboard {
+    background-color: #f8f9fa;
+}
+
+.o_construction_dashboard .card {
+    border: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.o_construction_dashboard .card:hover {
+    transform: translateY(-2px);
+}
+
+.o_construction_dashboard .card-header {
+    background-color: #fff;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.o_construction_dashboard .card-body {
+    padding: 1.25rem;
+}
+
+.o_construction_dashboard .progress {
+    border-radius: 10px;
+}
+
+.o_construction_dashboard .progress-bar {
+    border-radius: 10px;
+    font-size: 0.75rem;
+    font-weight: bold;
+}
+
+.o_construction_dashboard .badge {
+    padding: 0.4em 0.8em;
+    font-size: 0.75rem;
+}
+
+.o_construction_dashboard .btn-group {
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.o_construction_dashboard .table th {
+    border-top: none;
+    font-weight: 600;
+    color: #495057;
+}
+
+.o_construction_dashboard .table td {
+    vertical-align: middle;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.cursor-pointer:hover {
+    background-color: #f0f0f0;
+}

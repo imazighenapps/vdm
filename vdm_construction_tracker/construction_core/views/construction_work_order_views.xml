@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Work Order List View -->
+    <record id="construction_work_order_view_list" model="ir.ui.view">
+        <field name="name">construction.work.order.list</field>
+        <field name="model">construction.work.order</field>
+        <field name="arch" type="xml">
+            <list string="Work Orders">
+                <field name="name"/>
+                <field name="project_id"/>
+                <field name="phase_id"/>
+                <field name="foreman_id"/>
+                <field name="priority" widget="priority"/>
+                <field name="planned_start"/>
+                <field name="planned_end"/>
+                <field name="planned_cost"/>
+                <field name="actual_cost"/>
+                <field name="progress" widget="progressbar"/>
+                <field name="state" widget="badge" decoration-success="state == 'done'" decoration-warning="state == 'in_progress'"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Work Order Form View -->
+    <record id="construction_work_order_view_form" model="ir.ui.view">
+        <field name="name">construction.work.order.form</field>
+        <field name="model">construction.work.order</field>
+        <field name="arch" type="xml">
+            <form string="Work Order">
+                <header>
+                    <button name="action_confirm" type="object" class="oe_highlight" string="Confirm" invisible="state != 'draft'"/>
+                    <button name="action_start" type="object" class="oe_highlight" string="Start Work" invisible="state != 'confirmed'"/>
+                    <button name="action_done" type="object" class="oe_highlight" string="Mark Done" invisible="state != 'in_progress'"/>
+                    <button name="action_cancel" type="object" string="Cancel" invisible="state in ('done','cancelled')"/>
+                    <button name="action_draft" type="object" string="Reset to Draft" invisible="state not in ('cancelled')"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1>
+                            <field name="name" placeholder="Work Order Reference"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="project_id"/>
+                            <field name="phase_id"/>
+                            <field name="boq_line_id"/>
+                            <field name="foreman_id"/>
+                        </group>
+                        <group>
+                            <field name="priority" widget="priority"/>
+                            <field name="planned_start"/>
+                            <field name="planned_end"/>
+                            <field name="actual_start"/>
+                            <field name="actual_end"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="planned_cost"/>
+                            <field name="actual_cost"/>
+                            <field name="progress" widget="progressbar"/>
+                            <field name="currency_id" invisible="1"/>
+                        </group>
+                    </group>
+                    <field name="description" placeholder="Work description..."/>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!-- Work Order Search View -->
+    <record id="construction_work_order_view_search" model="ir.ui.view">
+        <field name="name">construction.work.order.search</field>
+        <field name="model">construction.work.order</field>
+        <field name="arch" type="xml">
+            <search string="Search Work Orders">
+                <field name="name"/>
+                <field name="project_id"/>
+                <field name="phase_id"/>
+                <field name="foreman_id"/>
+                <filter name="filter_in_progress" string="In Progress" domain="[('state', '=', 'in_progress')]"/>
+                <filter name="filter_urgent" string="Urgent" domain="[('priority', '=', 'urgent')]"/>
+                <group expand="0" string="Group By">
+                    <filter name="group_project" string="Project" context="{'group_by': 'project_id'}"/>
+                    <filter name="group_phase" string="Phase" context="{'group_by': 'phase_id'}"/>
+                    <filter name="group_foreman" string="Foreman" context="{'group_by': 'foreman_id'}"/>
+                    <filter name="group_state" string="Status" context="{'group_by': 'state'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Work Order Action -->
+    <record id="action_construction_work_order" model="ir.actions.act_window">
+        <field name="name">Work Orders</field>
+        <field name="res_model">construction.work.order</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="construction_work_order_view_search"/>
+    </record>
+</odoo>

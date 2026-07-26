@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_construction_dpr">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2>Daily Progress Report</h2>
+                        <div class="row mb32">
+                            <div class="col-6">
+                                <strong>Reference:</strong> <span t-field="doc.name"/><br/>
+                                <strong>Project:</strong> <span t-field="doc.project_id"/><br/>
+                                <strong>Date:</strong> <span t-field="doc.date"/>
+                            </div>
+                            <div class="col-6 text-right">
+                                <strong>Weather:</strong> <span t-field="doc.weather"/><br/>
+                                <strong>Temperature:</strong> <span t-field="doc.temperature"/> °C<br/>
+                                <strong>Status:</strong> <span t-field="doc.state"/>
+                            </div>
+                        </div>
+
+                        <h4>Work Completed</h4>
+                        <div t-field="doc.work_completed" class="mb32"/>
+
+                        <div class="row mb32">
+                            <div class="col-4">
+                                <strong>Labor Deployed:</strong> <span t-field="doc.labor_deployed"/>
+                            </div>
+                        </div>
+
+                        <h4>Materials Used</h4>
+                        <div t-field="doc.materials_used" class="mb32"/>
+
+                        <h4>Machinery Used</h4>
+                        <div t-field="doc.machinery_used" class="mb32"/>
+
+                        <div class="row mb32">
+                            <div class="col-6">
+                                <h4>Safety Issues</h4>
+                                <div t-field="doc.safety_issues"/>
+                            </div>
+                            <div class="col-6">
+                                <h4>Delay Reasons</h4>
+                                <div t-field="doc.delay_reasons"/>
+                            </div>
+                        </div>
+
+                        <h4>Next Day Plan</h4>
+                        <div t-field="doc.next_day_plan" class="mb32"/>
+
+                        <h4>Engineer Remarks</h4>
+                        <div t-field="doc.engineer_remarks"/>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

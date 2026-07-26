@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Site Diary List View -->
+    <record id="construction_site_diary_view_list" model="ir.ui.view">
+        <field name="name">construction.site.diary.list</field>
+        <field name="model">construction.site.diary</field>
+        <field name="arch" type="xml">
+            <list string="Daily Progress Reports">
+                <field name="name"/>
+                <field name="project_id"/>
+                <field name="date"/>
+                <field name="weather" widget="badge"/>
+                <field name="labor_deployed"/>
+                <field name="photo_ids" widget="many2many_tags"/>
+                <field name="state" widget="badge" decoration-success="state == 'approved'" decoration-warning="state == 'submitted'"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Site Diary Form View -->
+    <record id="construction_site_diary_view_form" model="ir.ui.view">
+        <field name="name">construction.site.diary.form</field>
+        <field name="model">construction.site.diary</field>
+        <field name="arch" type="xml">
+            <form string="Daily Progress Report">
+                <header>
+                    <button name="action_submit" type="object" class="oe_highlight" string="Submit" invisible="state != 'draft'"/>
+                    <button name="action_approve" type="object" class="oe_highlight" string="Approve" invisible="state != 'submitted'" groups="construction_core.group_construction_manager"/>
+                    <button name="action_reject" type="object" string="Reject" invisible="state != 'submitted'" groups="construction_core.group_construction_manager" class="btn-danger"/>
+                    <button name="action_draft" type="object" string="Reset to Draft" invisible="state not in ('submitted','approved','rejected')"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1>
+                            <field name="name" placeholder="DPR Reference"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="project_id"/>
+                            <field name="date"/>
+                            <field name="weather"/>
+                            <field name="temperature"/>
+                        </group>
+                        <group>
+                            <field name="submitted_by"/>
+                            <field name="approved_by"/>
+                            <field name="phase_ids" widget="many2many_tags"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Work Details" name="work">
+                            <group>
+                                <field name="labor_deployed"/>
+                                <field name="materials_used" placeholder="Materials used today..."/>
+                                <field name="machinery_used" placeholder="Machinery deployed..."/>
+                            </group>
+                            <field name="work_completed" placeholder="Describe work completed today..."/>
+                        </page>
+                        <page string="Issues" name="issues">
+                            <group>
+                                <field name="safety_issues" placeholder="Safety issues or concerns..."/>
+                                <field name="delay_reasons" placeholder="Reasons for any delays..."/>
+                            </group>
+                        </page>
+                        <page string="Next Day" name="next_day">
+                            <field name="next_day_plan" placeholder="Plan for next day..."/>
+                            <field name="engineer_remarks" placeholder="Engineer remarks..."/>
+                        </page>
+                        <page string="Photos" name="photos">
+                            <field name="photo_ids"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!-- Site Diary Search View -->
+    <record id="construction_site_diary_view_search" model="ir.ui.view">
+        <field name="name">construction.site.diary.search</field>
+        <field name="model">construction.site.diary</field>
+        <field name="arch" type="xml">
+            <search string="Search Daily Reports">
+                <field name="name"/>
+                <field name="project_id"/>
+                <field name="date"/>
+                <filter name="filter_today" string="Today" domain="[('date', '=', context_today().date())]"/>
+                <filter name="filter_this_week" string="This Week" domain="[('date', '&gt;=', (context_today() - timedelta(days=7)).date())]"/>
+                <group expand="0" string="Group By">
+                    <filter name="group_project" string="Project" context="{'group_by': 'project_id'}"/>
+                    <filter name="group_date" string="Date" context="{'group_by': 'date:month'}"/>
+                    <filter name="group_state" string="Status" context="{'group_by': 'state'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Site Diary Action -->
+    <record id="action_construction_site_diary" model="ir.actions.act_window">
+        <field name="name">Daily Progress Reports</field>
+        <field name="res_model">construction.site.diary</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="construction_site_diary_view_search"/>
+        <field name="context">{'search_default_filter_this_week': 1}</field>
+    </record>
+</odoo>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Expense List View -->
+    <record id="construction_expense_view_list" model="ir.ui.view">
+        <field name="name">construction.expense.list</field>
+        <field name="model">construction.expense</field>
+        <field name="arch" type="xml">
+            <list string="Expenses">
+                <field name="name"/>
+                <field name="project_id"/>
+                <field name="phase_id"/>
+                <field name="category" widget="badge"/>
+                <field name="amount"/>
+                <field name="date"/>
+                <field name="state" widget="badge" decoration-success="state == 'approved'" decoration-danger="state == 'rejected'"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Expense Form View -->
+    <record id="construction_expense_view_form" model="ir.ui.view">
+        <field name="name">construction.expense.form</field>
+        <field name="model">construction.expense</field>
+        <field name="arch" type="xml">
+            <form string="Expense">
+                <header>
+                    <button name="action_approve" type="object" class="oe_highlight" string="Approve" invisible="state != 'draft'" groups="construction_core.group_construction_manager"/>
+                    <button name="action_reject" type="object" string="Reject" invisible="state != 'draft'" groups="construction_core.group_construction_manager" class="btn-danger"/>
+                    <button name="action_draft" type="object" string="Reset to Draft" invisible="state not in ('approved','rejected')"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="project_id"/>
+                            <field name="phase_id"/>
+                            <field name="work_order_id"/>
+                        </group>
+                        <group>
+                            <field name="category"/>
+                            <field name="amount"/>
+                            <field name="date"/>
+                            <field name="currency_id" invisible="1"/>
+                        </group>
+                    </group>
+                    <field name="notes" placeholder="Notes..."/>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Expense Search View -->
+    <record id="construction_expense_view_search" model="ir.ui.view">
+        <field name="name">construction.expense.search</field>
+        <field name="model">construction.expense</field>
+        <field name="arch" type="xml">
+            <search string="Search Expenses">
+                <field name="name"/>
+                <field name="project_id"/>
+                <field name="category"/>
+                <group expand="0" string="Group By">
+                    <filter name="group_project" string="Project" context="{'group_by': 'project_id'}"/>
+                    <filter name="group_category" string="Category" context="{'group_by': 'category'}"/>
+                    <filter name="group_state" string="Status" context="{'group_by': 'state'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Expense Action -->
+    <record id="action_construction_expense" model="ir.actions.act_window">
+        <field name="name">Expenses</field>
+        <field name="res_model">construction.expense</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="construction_expense_view_search"/>
+    </record>
+</odoo>

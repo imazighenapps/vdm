@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- BOQ Line List View -->
+    <record id="construction_boq_line_view_list" model="ir.ui.view">
+        <field name="name">construction.boq.line.list</field>
+        <field name="model">construction.boq.line</field>
+        <field name="arch" type="xml">
+            <list string="BOQ Lines" editable="bottom">
+                <field name="sequence" widget="handle"/>
+                <field name="item_code"/>
+                <field name="name"/>
+                <field name="work_type"/>
+                <field name="phase_id"/>
+                <field name="uom_id"/>
+                <field name="quantity"/>
+                <field name="unit_rate"/>
+                <field name="amount"/>
+                <field name="quantity_done"/>
+                <field name="progress" widget="progressbar"/>
+                <field name="state" widget="badge"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- BOQ Line Form View -->
+    <record id="construction_boq_line_view_form" model="ir.ui.view">
+        <field name="name">construction.boq.line.form</field>
+        <field name="model">construction.boq.line</field>
+        <field name="arch" type="xml">
+            <form string="BOQ Line">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="boq_id"/>
+                            <field name="name"/>
+                            <field name="item_code"/>
+                            <field name="work_type"/>
+                        </group>
+                        <group>
+                            <field name="phase_id"/>
+                            <field name="uom_id"/>
+                            <field name="quantity"/>
+                            <field name="unit_rate"/>
+                            <field name="amount"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="quantity_done"/>
+                            <field name="quantity_invoiced"/>
+                            <field name="progress" widget="progressbar"/>
+                        </group>
+                    </group>
+                    <field name="notes" placeholder="Notes..."/>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- BOQ Line Action -->
+    <record id="action_construction_boq_line" model="ir.actions.act_window">
+        <field name="name">BOQ Lines</field>
+        <field name="res_model">construction.boq.line</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>
