@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Gentle Reminder Template -->
+        <record id="email_template_reminder_gentle" model="mail.template">
+            <field name="name">Invoice Reminder - Gentle</field>
+            <field name="model_id" ref="account.model_account_move"/>
+            <field name="subject">Friendly Reminder: Invoice {{ object.name }} - Due {{ object.invoice_date_due }}</field>
+            <field name="email_from">{{ (object.company_id.email or 'noreply@company.com') }}</field>
+            <field name="email_to">{{ object.partner_id.email }}</field>
+            <field name="body_html" type="html">
+                <div style="font-family: Arial, sans-serif; font-size: 14px; color: #333;">
+                    <p>Dear <strong>{{ object.partner_id.name }}</strong>,</p>
+                    
+                    <p>This is a friendly reminder that your invoice <strong>{{ object.name }}</strong> 
+                    for <strong>{{ object.amount_total }} {{ object.currency_id.name }}</strong> 
+                    was due on <strong>{{ object.invoice_date_due }}</strong>.</p>
+                    
+                    <p>We understand you may have simply overlooked this payment. 
+                    We would appreciate it if you could arrange payment at your earliest convenience.</p>
+                    
+                    <p>If you have already sent payment, please disregard this reminder.</p>
+                    
+                    <p>Best regards,<br/>
+                    <strong>{{ object.company_id.name }}</strong></p>
+                </div>
+            </field>
+            <field name="lang">{{ object.partner_id.lang }}</field>
+        </record>
+
+        <!-- Firm Reminder Template -->
+        <record id="email_template_reminder_firm" model="mail.template">
+            <field name="name">Invoice Reminder - Firm</field>
+            <field name="model_id" ref="account.model_account_move"/>
+            <field name="subject">OVERDUE: Invoice {{ object.name }} - Immediate Payment Required</field>
+            <field name="email_from">{{ (object.company_id.email or 'noreply@company.com') }}</field>
+            <field name="email_to">{{ object.partner_id.email }}</field>
+            <field name="body_html" type="html">
+                <div style="font-family: Arial, sans-serif; font-size: 14px; color: #333;">
+                    <p>Dear <strong>{{ object.partner_id.name }}</strong>,</p>
+                    
+                    <p>We are writing to inform you that your invoice <strong>{{ object.name }}</strong> 
+                    for <strong>{{ object.amount_total }} {{ object.currency_id.name }}</strong> 
+                    is now <strong style="color: #d32f2f;">overdue</strong>.</p>
+                    
+                    <p>Due date was: <strong>{{ object.invoice_date_due }}</strong><br/>
+                    Days overdue: <strong>{{ object.days_overdue }} days</strong><br/>
+                    Amount outstanding: <strong>{{ object.invoice_residual_signed }} {{ object.currency_id.name }}</strong></p>
+                    
+                    <p>Please arrange immediate payment to avoid any disruption to our services.</p>
+                    
+                    <p>If you have already sent payment, please disregard this notice.</p>
+                    
+                    <p>Best regards,<br/>
+                    <strong>{{ object.company_id.name }}</strong></p>
+                </div>
+            </field>
+            <field name="lang">{{ object.partner_id.lang }}</field>
+        </record>
+
+        <!-- Legal Notice Template -->
+        <record id="email_template_reminder_legal" model="mail.template">
+            <field name="name">Invoice Reminder - Legal Notice</field>
+            <field name="model_id" ref="account.model_account_move"/>
+            <field name="subject">FINAL NOTICE: Invoice {{ object.name }} - Account Seriously Overdue</field>
+            <field name="email_from">{{ (object.company_id.email or 'noreply@company.com') }}</field>
+            <field name="email_to">{{ object.partner_id.email }}</field>
+            <field name="body_html" type="html">
+                <div style="font-family: Arial, sans-serif; font-size: 14px; color: #333;">
+                    <p>Dear <strong>{{ object.partner_id.name }}</strong>,</p>
+                    
+                    <p>Despite our previous reminders, your account remains <strong style="color: #d32f2f;">seriously overdue</strong>.</p>
+                    
+                    <p><strong>Invoice:</strong> {{ object.name }}<br/>
+                    <strong>Original Due Date:</strong> {{ object.invoice_date_due }}<br/>
+                    <strong>Days Overdue:</strong> {{ object.days_overdue }} days<br/>
+                    <strong>Amount Outstanding:</strong> {{ object.invoice_residual_signed }} {{ object.currency_id.name }}</p>
+                    
+                    <p>This is your <strong>final notice</strong> before we are forced to take further action, 
+                    which may include:</p>
+                    <ul>
+                        <li>Suspension of services/products</li>
+                        <li>Referral to a collection agency</li>
+                        <li>Legal proceedings to recover the debt</li>
+                    </ul>
+                    
+                    <p>We strongly urge you to settle this outstanding balance immediately.</p>
+                    
+                    <p>Best regards,<br/>
+                    <strong>{{ object.company_id.name }}</strong></p>
+                </div>
+            </field>
+            <field name="lang">{{ object.partner_id.lang }}</field>
+        </record>
+    </data>
+</odoo>

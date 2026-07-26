@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="invoice_chaser_report">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2>Invoice Chaser Report</h2>
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr style="background-color: #f5f5f5;">
+                                    <th>Invoice</th>
+                                    <th>Customer</th>
+                                    <th>Due Date</th>
+                                    <th>Days Overdue</th>
+                                    <th>Amount</th>
+                                    <th>Reminders</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="docs" t-as="inv">
+                                    <tr>
+                                        <td><t t-field="inv.name"/></td>
+                                        <td><t t-field="inv.partner_id"/></td>
+                                        <td><t t-field="inv.invoice_date_due"/></td>
+                                        <td><t t-field="inv.days_overdue"/></td>
+                                        <td><t t-field="inv.invoice_residual_signed"/></td>
+                                        <td><t t-field="inv.reminder_count"/></td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

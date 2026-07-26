@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_invoice_chaser_config_user,invoice.chaser.config.user,model_invoice_chaser_config,group_invoice_chaser_user,1,0,0,0
+access_invoice_chaser_config_manager,invoice.chaser.config.manager,model_invoice_chaser_config,group_invoice_chaser_manager,1,1,1,1
+access_invoice_reminder_log_user,invoice.reminder.log.user,model_invoice_reminder_log,group_invoice_chaser_user,1,0,0,0
+access_invoice_reminder_log_manager,invoice.reminder.log.manager,model_invoice_reminder_log,group_invoice_chaser_manager,1,1,1,1

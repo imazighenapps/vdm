@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="invoice_chaser_menu_root" name="Invoice Chaser" 
+        web_icon="vdm_invoice_chaser,static/description/icon.png" sequence="45"/>
+
+    <record id="invoice_chaser_menu_dashboard" name="Dashboard" 
+        parent="invoice_chaser_menu_root" sequence="1"/>
+
+    <record id="invoice_chaser_menu_overdue" name="Overdue Invoices" 
+        parent="invoice_chaser_menu_root" sequence="10"/>
+
+    <record id="invoice_chaser_menu_reminders" name="Reminder History" 
+        parent="invoice_chaser_menu_root" sequence="20"/>
+
+    <record id="invoice_chaser_menu_config" name="Configuration" 
+        parent="invoice_chaser_menu_root" sequence="90"/>
+</odoo>
