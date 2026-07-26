@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'AI Sales Chatbot for WhatsApp & Website',
-    'version': '19.0.1.0.0',
+    'version': '18.0.1.0.0',
     'category': 'Marketing/CRM',
     'summary': 'Qualify leads and answer questions with AI on WhatsApp & website',
     'description': """
