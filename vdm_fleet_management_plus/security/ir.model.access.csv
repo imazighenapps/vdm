@@ -1,0 +1,14 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_vehicle_user,fleet.vehicle.plus.user,model_fleet_vehicle_plus,group_fleet_user,1,0,0,0
+access_vehicle_manager,fleet.vehicle.plus.manager,model_fleet_vehicle_plus,group_fleet_manager,1,1,1,1
+access_vehicle_admin,fleet.vehicle.plus.admin,model_fleet_vehicle_plus,group_fleet_admin,1,1,1,1
+access_maintenance_user,fleet.maintenance.user,model_fleet_maintenance,group_fleet_user,1,0,0,0
+access_maintenance_manager,fleet.maintenance.manager,model_fleet_maintenance,group_fleet_manager,1,1,1,1
+access_maintenance_part_user,fleet.maintenance.part.user,model_fleet_maintenance_part,group_fleet_user,1,0,0,0
+access_maintenance_part_manager,fleet.maintenance.part.manager,model_fleet_maintenance_part,group_fleet_manager,1,1,1,1
+access_fuel_user,fleet.fuel.user,model_fleet_fuel,group_fleet_user,1,0,0,0
+access_fuel_manager,fleet.fuel.manager,model_fleet_fuel,group_fleet_manager,1,1,1,1
+access_insurance_user,fleet.insurance.user,model_fleet_insurance,group_fleet_user,1,0,0,0
+access_insurance_manager,fleet.insurance.manager,model_fleet_insurance,group_fleet_manager,1,1,1,1
+access_cost_user,fleet.cost.user,model_fleet_cost,group_fleet_user,1,0,0,0
+access_cost_manager,fleet.cost.manager,model_fleet_cost,group_fleet_manager,1,1,1,1

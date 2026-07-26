@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_worker_tree" model="ir.ui.view">
+        <field name="name">construction.worker.list</field>
+        <field name="model">construction.worker</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="employee_id"/>
+                <field name="worker_type"/>
+                <field name="hourly_rate"/>
+                <field name="total_hours" widget="float_time"/>
+                <field name="total_cost"/>
+                <field name="active" invisible="not active"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_worker_form" model="ir.ui.view">
+        <field name="name">construction.worker.form</field>
+        <field name="model">construction.worker</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="Worker Name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="employee_id"/>
+                            <field name="worker_type"/>
+                            <field name="hourly_rate"/>
+                        </group>
+                        <group>
+                            <field name="phone"/>
+                            <field name="email"/>
+                            <field name="active"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Skills">
+                            <field name="skill_ids" widget="many2many_tags"/>
+                        </page>
+                        <page string="Time Entries">
+                            <field name="time_entry_ids"/>
+                        </page>
+                        <page string="Statistics">
+                            <group>
+                                <field name="total_hours" widget="float_time"/>
+                                <field name="total_cost"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_worker_search" model="ir.ui.view">
+        <field name="name">construction.worker.search</field>
+        <field name="model">construction.worker</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="employee_id"/>
+                <field name="worker_type"/>
+                <filter name="filter_active" string="Active" domain="[('active', '=', True)]"/>
+                <filter name="filter_inactive" string="Inactive" domain="[('active', '=', False)]"/>
+                <group expand="0" string="Group By">
+                    <filter name="group_type" string="Worker Type" context="{'group_by': 'worker_type'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_worker" model="ir.actions.act_window">
+        <field name="name">Workers</field>
+        <field name="res_model">construction.worker</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_worker_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first worker
+            </p>
+            <p>Add workers to track their time on construction projects.</p>
+        </field>
+    </record>
+
+    <record id="view_worker_skill_tree" model="ir.ui.view">
+        <field name="name">construction.worker.skill.list</field>
+        <field name="model">construction.worker.skill</field>
+        <field name="arch" type="xml">
+            <list editable="bottom">
+                <field name="name"/>
+                <field name="description"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="action_worker_skill" model="ir.actions.act_window">
+        <field name="name">Worker Skills</field>
+        <field name="res_model">construction.worker.skill</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

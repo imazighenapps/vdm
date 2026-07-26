@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="module_category_fleet_plus" model="ir.module.category">
+        <field name="name">Fleet Management Plus</field>
+        <field name="description">Advanced fleet management and tracking</field>
+        <field name="sequence">50</field>
+    </record>
+
+    <record id="group_fleet_user" model="res.groups">
+        <field name="name">User</field>
+        <field name="category_id" ref="module_category_fleet_plus"/>
+        <field name="comment">Basic access to fleet management</field>
+    </record>
+
+    <record id="group_fleet_manager" model="res.groups">
+        <field name="name">Manager</field>
+        <field name="category_id" ref="module_category_fleet_plus"/>
+        <field name="implied_ids" eval="[(4, ref('group_fleet_user'))]"/>
+        <field name="comment">Full access to fleet management and reporting</field>
+    </record>
+
+    <record id="group_fleet_admin" model="res.groups">
+        <field name="name">Administrator</field>
+        <field name="category_id" ref="module_category_fleet_plus"/>
+        <field name="implied_ids" eval="[(4, ref('group_fleet_manager'))]"/>
+        <field name="comment">Full system access including configuration</field>
+    </record>
+
+    <!-- Record Rules -->
+    <record id="rule_vehicle_user" model="ir.rule">
+        <field name="name">Vehicle: User Read Only</field>
+        <field name="model_id" ref="model_fleet_vehicle_plus"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_fleet_user'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+
+    <record id="rule_vehicle_manager" model="ir.rule">
+        <field name="name">Vehicle: Manager Full Access</field>
+        <field name="model_id" ref="model_fleet_vehicle_plus"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_fleet_manager'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+
+    <record id="rule_maintenance_user" model="ir.rule">
+        <field name="name">Maintenance: User Read Only</field>
+        <field name="model_id" ref="model_fleet_maintenance"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_fleet_user'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+
+    <record id="rule_maintenance_manager" model="ir.rule">
+        <field name="name">Maintenance: Manager Full Access</field>
+        <field name="model_id" ref="model_fleet_maintenance"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_fleet_manager'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+
+    <record id="rule_fuel_user" model="ir.rule">
+        <field name="name">Fuel: User Read Only</field>
+        <field name="model_id" ref="model_fleet_fuel"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_fleet_user'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+
+    <record id="rule_fuel_manager" model="ir.rule">
+        <field name="name">Fuel: Manager Full Access</field>
+        <field name="model_id" ref="model_fleet_fuel"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_fleet_manager'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+
+    <record id="rule_insurance_user" model="ir.rule">
+        <field name="name">Insurance: User Read Only</field>
+        <field name="model_id" ref="model_fleet_insurance"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_fleet_user'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+
+    <record id="rule_insurance_manager" model="ir.rule">
+        <field name="name">Insurance: Manager Full Access</field>
+        <field name="model_id" ref="model_fleet_insurance"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_fleet_manager'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+
+    <record id="rule_cost_user" model="ir.rule">
+        <field name="name">Cost: User Read Only</field>
+        <field name="model_id" ref="model_fleet_cost"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_fleet_user'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+
+    <record id="rule_cost_manager" model="ir.rule">
+        <field name="name">Cost: Manager Full Access</field>
+        <field name="model_id" ref="model_fleet_cost"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_fleet_manager'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+</odoo>

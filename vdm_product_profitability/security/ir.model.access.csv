@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_profitability_user,product.profitability.user,model_product_profitability,group_profitability_user,1,0,0,0
+access_profitability_manager,product.profitability.manager,model_product_profitability,group_profitability_manager,1,1,1,1
+access_profitability_admin,product.profitability.admin,model_product_profitability,group_profitability_admin,1,1,1,1
+access_profitability_line_user,product.profitability.line.user,model_product_profitability_line,group_profitability_user,1,0,0,0
+access_profitability_line_manager,product.profitability.line.manager,model_product_profitability_line,group_profitability_manager,1,1,1,1

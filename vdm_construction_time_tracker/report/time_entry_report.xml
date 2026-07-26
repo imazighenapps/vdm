@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_report_time_entry" model="ir.actions.report">
+        <field name="name">Time Entry Report</field>
+        <field name="model">construction.time.entry</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">vdm_construction_time_tracker.report_time_entry</field>
+        <field name="report_file">vdm_construction_time_tracker.report_time_entry</field>
+        <field name="binding_model_id" ref="model_construction_time_entry"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <record id="view_report_time_entry_form" model="ir.ui.view">
+        <field name="name">report.time.entry.form</field>
+        <field name="model">ir.actions.report</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="model"/>
+                        <field name="report_type"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

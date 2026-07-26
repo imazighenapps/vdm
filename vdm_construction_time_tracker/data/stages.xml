@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Phase Stages -->
+        <record id="phase_stage_planned" model="construction.project.phase">
+            <field name="name">Planned</field>
+            <field name="sequence">1</field>
+        </record>
+
+        <record id="phase_stage_in_progress" model="construction.project.phase">
+            <field name="name">In Progress</field>
+            <field name="sequence">2</field>
+        </record>
+
+        <record id="phase_stage_completed" model="construction.project.phase">
+            <field name="name">Completed</field>
+            <field name="sequence">3</field>
+        </record>
+
+        <record id="phase_stage_on_hold" model="construction.project.phase">
+            <field name="name">On Hold</field>
+            <field name="sequence">4</field>
+        </record>
+    </data>
+</odoo>

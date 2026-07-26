@@ -1,0 +1,15 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_time_entry_user,construction.time.entry.user,model_construction_time_entry,group_time_user,1,1,1,0
+access_time_entry_manager,construction.time.entry.manager,model_construction_time_entry,group_time_manager,1,1,1,1
+access_time_entry_admin,construction.time.entry.admin,model_construction_time_entry,group_time_admin,1,1,1,1
+access_project_phase_user,construction.project.phase.user,model_construction_project_phase,group_time_user,1,0,0,0
+access_project_phase_manager,construction.project.phase.manager,model_construction_project_phase,group_time_manager,1,1,1,1
+access_project_phase_admin,construction.project.phase.admin,model_construction_project_phase,group_time_admin,1,1,1,1
+access_worker_user,construction.worker.user,model_construction_worker,group_time_user,1,0,0,0
+access_worker_manager,construction.worker.manager,model_construction_worker,group_time_manager,1,1,1,1
+access_worker_admin,construction.worker.admin,model_construction_worker,group_time_admin,1,1,1,1
+access_worker_skill_user,construction.worker.skill.user,model_construction_worker_skill,group_time_user,1,0,0,0
+access_worker_skill_manager,construction.worker.skill.manager,model_construction_worker_skill,group_time_manager,1,1,1,1
+access_cost_line_user,construction.cost.line.user,model_construction_cost_line,group_time_user,1,0,0,0
+access_cost_line_manager,construction.cost.line.manager,model_construction_cost_line,group_time_manager,1,1,1,1
+access_cost_line_admin,construction.cost.line.admin,model_construction_cost_line,group_time_admin,1,1,1,1

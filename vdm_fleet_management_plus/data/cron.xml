@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Default maintenance reminder days -->
+        <record id="default_maintenance_reminder_days" model="ir.config_parameter">
+            <field name="key">fleet_management_plus.maintenance_reminder_days</field>
+            <field name="value">7</field>
+        </record>
+
+        <!-- Default insurance reminder days -->
+        <record id="default_insurance_reminder_days" model="ir.config_parameter">
+            <field name="key">fleet_management_plus.insurance_reminder_days</field>
+            <field name="value">30</field>
+        </record>
+    </data>
+</odoo>

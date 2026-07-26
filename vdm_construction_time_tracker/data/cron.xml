@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Default Hourly Rates (can be overridden) -->
+        <record id="default_equipment_rate" model="ir.config_parameter">
+            <field name="key">construction_time_tracker.equipment_rate</field>
+            <field name="value">25.0</field>
+        </record>
+
+        <record id="default_subcontract_rate" model="ir.config_parameter">
+            <field name="key">construction_time_tracker.subcontract_rate</field>
+            <field name="value">45.0</field>
+        </record>
+    </data>
+</odoo>
