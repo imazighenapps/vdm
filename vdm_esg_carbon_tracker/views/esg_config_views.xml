@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- ESG Config Form -->
+    <record id="esg_config_form" model="ir.ui.view">
+        <field name="name">esg.config.form</field>
+        <field name="model">esg.config</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>ESG Configuration</h1>
+                    </div>
+                    <group>
+                        <group string="General Settings">
+                            <field name="company_id"/>
+                            <field name="base_year"/>
+                            <field name="reporting_currency_id"/>
+                            <field name="emission_factor_source"/>
+                        </group>
+                        <group string="Scope Tracking">
+                            <field name="scope1_enabled"/>
+                            <field name="scope2_enabled"/>
+                            <field name="scope3_enabled"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group string="Compliance">
+                            <field name="sbti_aligned"/>
+                            <field name="csrd_reporting"/>
+                        </group>
+                        <group string="Anomaly Detection">
+                            <field name="anomaly_detection"/>
+                            <field name="anomaly_threshold" widget="percentage"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Current Emissions" name="emissions">
+                            <group>
+                                <group>
+                                    <field name="total_scope1"/>
+                                    <field name="total_scope2"/>
+                                    <field name="total_scope3"/>
+                                </group>
+                                <group>
+                                    <field name="total_emissions" class="oe_stat_value"/>
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- ESG Config Search -->
+    <record id="esg_config_search" model="ir.ui.view">
+        <field name="name">esg.config.search</field>
+        <field name="model">esg.config</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="company_id"/>
+                <field name="base_year"/>
+                <filter name="sbti_aligned" string="SBTi Aligned" domain="[('sbti_aligned', '=', True)]"/>
+                <filter name="csrd_reporting" string="CSRD Required" domain="[('csrd_reporting', '=', True)]"/>
+            </search>
+        </field>
+    </record>
+
+    <!-- ESG Config Action -->
+    <record id="action_esg_config" model="ir.actions.act_window">
+        <field name="name">ESG Settings</field>
+        <field name="res_model">esg.config</field>
+        <field name="view_mode">form</field>
+        <field name="target">current</field>
+        <field name="context">{'search_default_company_id': company}</field>
+    </record>
+</odoo>

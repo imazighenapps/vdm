@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Carbon Offset Form -->
+    <record id="esg_carbon_offset_form" model="ir.ui.view">
+        <field name="name">esg.carbon.offset.form</field>
+        <field name="model">esg.carbon.offset</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_purchase" string="Mark as Purchased" type="object" 
+                        class="oe_highlight" invisible="state != 'draft'"/>
+                    <button name="action_retire" string="Retire All Credits" type="object" 
+                        class="oe_highlight" invisible="state not in ('purchased', 'partially_retired')"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,purchased,fully_retired"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="name" placeholder="Offset Reference"/></h1>
+                    </div>
+                    <group>
+                        <group string="Project Details">
+                            <field name="project_name"/>
+                            <field name="project_type"/>
+                            <field name="standard"/>
+                            <field name="project_country_id"/>
+                        </group>
+                        <group string="Credits">
+                            <field name="total_credits"/>
+                            <field name="retired_credits"/>
+                            <field name="available_credits"/>
+                            <field name="vintage_year"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group string="Retirement">
+                            <field name="purchase_date"/>
+                            <field name="retirement_date"/>
+                            <field name="retirement_reason"/>
+                            <field name="retirement_certificate"/>
+                        </group>
+                        <group string="Cost">
+                            <field name="unit_price"/>
+                            <field name="total_cost"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Verification" name="verification">
+                            <group>
+                                <field name="verification_body"/>
+                                <field name="verification_date"/>
+                            </group>
+                        </page>
+                        <page string="Notes" name="notes">
+                            <field name="notes"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <!-- Carbon Offset List -->
+    <record id="esg_carbon_offset_list" model="ir.ui.view">
+        <field name="name">esg.carbon.offset.list</field>
+        <field name="model">esg.carbon.offset</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="project_name"/>
+                <field name="project_type"/>
+                <field name="standard"/>
+                <field name="total_credits"/>
+                <field name="retired_credits"/>
+                <field name="available_credits"/>
+                <field name="vintage_year"/>
+                <field name="total_cost"/>
+                <field name="state" widget="badge" decoration-success="state == 'fully_retired'" 
+                    decoration-warning="state == 'purchased'"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Carbon Offset Search -->
+    <record id="esg_carbon_offset_search" model="ir.ui.view">
+        <field name="name">esg.carbon.offset.search</field>
+        <field name="model">esg.carbon.offset</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="project_name"/>
+                <field name="standard"/>
+                <separator/>
+                <filter name="purchased" string="Purchased" domain="[('state', '=', 'purchased')]"/>
+                <filter name="fully_retired" string="Fully Retired" domain="[('state', '=', 'fully_retired')]"/>
+                <group expand="0" string="Group By">
+                    <filter name="group_by_project_type" string="Project Type" context="{'group_by': 'project_type'}"/>
+                    <filter name="group_by_standard" string="Standard" context="{'group_by': 'standard'}"/>
+                    <filter name="group_by_vintage" string="Vintage Year" context="{'group_by': 'vintage_year'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Carbon Offset Action -->
+    <record id="action_esg_carbon_offset" model="ir.actions.act_window">
+        <field name="name">Carbon Offsets</field>
+        <field name="res_model">esg.carbon.offset</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="esg_carbon_offset_search"/>
+    </record>
+</odoo>

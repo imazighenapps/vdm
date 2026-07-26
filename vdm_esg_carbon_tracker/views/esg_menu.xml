@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Root Menu -->
+    <menuitem id="menu_esg_root" name="ESG Carbon Tracker" 
+        web_icon="vdm_esg_carbon_tracker,static/description/icon.png" sequence="45"/>
+
+    <!-- Dashboard -->
+    <menuitem id="menu_esg_dashboard" name="Dashboard" 
+        parent="menu_esg_root" sequence="1"/>
+
+    <!-- Collect -->
+    <menuitem id="menu_esg_collect" name="Collect" 
+        parent="menu_esg_root" sequence="10"/>
+    <menuitem id="menu_esg_emission_line" name="Emission Lines" 
+        parent="menu_esg_collect" action="action_esg_emission_line" sequence="10"/>
+
+    <!-- Analyze -->
+    <menuitem id="menu_esg_analyze" name="Analyze" 
+        parent="menu_esg_root" sequence="20"/>
+    <menuitem id="menu_esg_carbon_inventory" name="Carbon Inventories" 
+        parent="menu_esg_analyze" action="action_esg_carbon_inventory" sequence="10"/>
+
+    <!-- Act -->
+    <menuitem id="menu_esg_act" name="Act" 
+        parent="menu_esg_root" sequence="30"/>
+    <menuitem id="menu_esg_reduction_target" name="Reduction Targets" 
+        parent="menu_esg_act" action="action_esg_reduction_target" sequence="10"/>
+    <menuitem id="menu_esg_carbon_offset" name="Carbon Offsets" 
+        parent="menu_esg_act" action="action_esg_carbon_offset" sequence="20"/>
+
+    <!-- Configuration -->
+    <menuitem id="menu_esg_config" name="Configuration" 
+        parent="menu_esg_root" sequence="90"/>
+    <menuitem id="menu_esg_config_settings" name="ESG Settings" 
+        parent="menu_esg_config" action="action_esg_config" sequence="10"/>
+    <menuitem id="menu_esg_emission_factor" name="Emission Factors" 
+        parent="menu_esg_config" action="action_esg_emission_factor" sequence="20"/>
+</odoo>

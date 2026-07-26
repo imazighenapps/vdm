@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- DEFRA 2024 Emission Factors (Sample) -->
+        
+        <!-- Scope 1: Stationary Combustion -->
+        <record id="ef_natural_gas" model="esg.emission.factor">
+            <field name="name">Natural Gas</field>
+            <field name="code">DEFRA-S1-NG</field>
+            <field name="scope">1</field>
+            <field name="category">stationary_combustion</field>
+            <field name="fuel_type">natural_gas</field>
+            <field name="gas_type">co2</field>
+            <field name="gwp_value">1.0</field>
+            <field name="factor_value">2.044</field>
+            <field name="unit">kwh</field>
+            <field name="compute_method">physical</field>
+            <field name="source_database">defra</field>
+        </record>
+        
+        <record id="ef_diesel" model="esg.emission.factor">
+            <field name="name">Diesel (Road)</field>
+            <field name="code">DEFRA-S1-DSL</field>
+            <field name="scope">1</field>
+            <field name="category">mobile_combustion</field>
+            <field name="fuel_type">diesel</field>
+            <field name="gas_type">co2</field>
+            <field name="gwp_value">1.0</field>
+            <field name="factor_value">2.68</field>
+            <field name="unit">liter</field>
+            <field name="compute_method">physical</field>
+            <field name="source_database">defra</field>
+        </record>
+        
+        <record id="ef_gasoline" model="esg.emission.factor">
+            <field name="name">Gasoline (Petrol)</field>
+            <field name="code">DEFRA-S1-GAS</field>
+            <field name="scope">1</field>
+            <field name="category">mobile_combustion</field>
+            <field name="fuel_type">gasoline</field>
+            <field name="gas_type">co2</field>
+            <field name="gwp_value">1.0</field>
+            <field name="factor_value">2.31</field>
+            <field name="unit">liter</field>
+            <field name="compute_method">physical</field>
+            <field name="source_database">defra</field>
+        </record>
+        
+        <!-- Scope 2: Purchased Energy -->
+        <record id="ef_electricity_uk" model="esg.emission.factor">
+            <field name="name">UK Grid Electricity (Location-based)</field>
+            <field name="code">DEFRA-S2-ELEC-UK</field>
+            <field name="scope">2</field>
+            <field name="category">purchased_energy</field>
+            <field name="fuel_type">electricity</field>
+            <field name="gas_type">co2</field>
+            <field name="gwp_value">1.0</field>
+            <field name="factor_value">0.207</field>
+            <field name="unit">kwh</field>
+            <field name="compute_method">physical</field>
+            <field name="source_database">defra</field>
+        </record>
+        
+        <record id="ef_electricity_eu" model="esg.emission.factor">
+            <field name="name">EU Average Grid Electricity</field>
+            <field name="code">DEFRA-S2-ELEC-EU</field>
+            <field name="scope">2</field>
+            <field name="category">purchased_energy</field>
+            <field name="fuel_type">electricity</field>
+            <field name="gas_type">co2</field>
+            <field name="gwp_value">1.0</field>
+            <field name="factor_value">0.277</field>
+            <field name="unit">kwh</field>
+            <field name="compute_method">physical</field>
+            <field name="source_database">defra</field>
+        </record>
+        
+        <!-- Scope 3 Categories -->
+        <record id="ef_business_travel_air" model="esg.emission.factor">
+            <field name="name">Business Travel - Domestic Flight</field>
+            <field name="code">DEFRA-S3-AIR-DOM</field>
+            <field name="scope">3</field>
+            <field name="category">business_travel</field>
+            <field name="fuel_type">other</field>
+            <field name="gas_type">co2</field>
+            <field name="gwp_value">1.0</field>
+            <field name="factor_value">0.246</field>
+            <field name="unit">km</field>
+            <field name="compute_method">physical</field>
+            <field name="source_database">defra</field>
+        </record>
+        
+        <record id="ef_upstream_transport" model="esg.emission.factor">
+            <field name="name">Upstream Transportation - Road Freight</field>
+            <field name="code">DEFRA-S3-TRANS</field>
+            <field name="scope">3</field>
+            <field name="category">upstream_transport</field>
+            <field name="fuel_type">diesel</field>
+            <field name="gas_type">co2</field>
+            <field name="gwp_value">1.0</field>
+            <field name="factor_value">0.062</field>
+            <field name="unit">tonne</field>
+            <field name="compute_method">physical</field>
+            <field name="source_database">defra</field>
+        </record>
+        
+        <!-- Waste -->
+        <record id="ef_waste_disposal" model="esg.emission.factor">
+            <field name="name">Waste Disposal - Landfill</field>
+            <field name="code">DEFRA-S3-WASTE</field>
+            <field name="scope">3</field>
+            <field name="category">waste</field>
+            <field name="fuel_type">other</field>
+            <field name="gas_type">co2</field>
+            <field name="gwp_value">1.0</field>
+            <field name="factor_value">0.587</field>
+            <field name="unit">tonne</field>
+            <field name="compute_method">physical</field>
+            <field name="source_database">defra</field>
+        </record>
+        
+        <!-- Employee Commuting -->
+        <record id="ef_employee_commuting_car" model="esg.emission.factor">
+            <field name="name">Employee Commuting - Car (Average)</field>
+            <field name="code">DEFRA-S3-COMM</field>
+            <field name="scope">3</field>
+            <field name="category">employee_commuting</field>
+            <field name="fuel_type">gasoline</field>
+            <field name="gas_type">co2</field>
+            <field name="gwp_value">1.0</field>
+            <field name="factor_value">0.17</field>
+            <field name="unit">km</field>
+            <field name="compute_method">physical</field>
+            <field name="source_database">defra</field>
+        </record>
+    </data>
+</odoo>

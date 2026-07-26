@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Carbon Footprint Report Action -->
+    <record id="action_report_carbon_footprint" model="ir.actions.report">
+        <field name="name">Carbon Footprint Report</field>
+        <field name="model">esg.carbon.inventory</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">vdm_esg_carbon_tracker.report_carbon_footprint</field>
+        <field name="binding_model_id" ref="model_esg_carbon_inventory"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

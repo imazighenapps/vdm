@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="vdm_esg_carbon_tracker.ESGDashboard">
+        <div class="o_esg_dashboard">
+            <t t-if="state.loading">
+                <div class="text-center py-5">
+                    <i class="fa fa-spinner fa-spin fa-3x"/>
+                    <p class="mt-3">Loading ESG Data...</p>
+                </div>
+            </t>
+            <t t-else="">
+                <!-- Summary Cards -->
+                <div class="row mb-4">
+                    <div class="col-md-3">
+                        <div class="card text-white bg-primary">
+                            <div class="card-body">
+                                <h6 class="card-title">Total Emissions</h6>
+                                <h2 class="card-text" t-out="state.summary.total_emissions?.toFixed(2) || '0.00'"/>
+                                <small>tCO2e</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card text-white bg-danger">
+                            <div class="card-body">
+                                <h6 class="card-title">Scope 1</h6>
+                                <h2 class="card-text" t-out="state.summary.scope1?.toFixed(2) || '0.00'"/>
+                                <small>tCO2e</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card text-white bg-warning">
+                            <div class="card-body">
+                                <h6 class="card-title">Scope 2</h6>
+                                <h2 class="card-text" t-out="state.summary.scope2?.toFixed(2) || '0.00'"/>
+                                <small>tCO2e</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card text-white bg-info">
+                            <div class="card-body">
+                                <h6 class="card-title">Scope 3</h6>
+                                <h2 class="card-text" t-out="state.summary.scope3?.toFixed(2) || '0.00'"/>
+                                <small>tCO2e</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Intensity & Reduction -->
+                <div class="row mb-4">
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h6 class="card-title">Carbon Intensity</h6>
+                                <p class="mb-1">Per €M Revenue:</p>
+                                <h4 t-out="state.summary.intensity_revenue?.toFixed(2) || '0.00'"/>
+                                <p class="mb-1 mt-3">Per Employee:</p>
+                                <h4 t-out="state.summary.intensity_employee?.toFixed(2) || '0.00'"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h6 class="card-title">Reduction Progress</h6>
+                                <p class="mb-1">vs Base Year:</p>
+                                <div class="progress mb-3">
+                                    <div class="progress-bar bg-success" 
+                                         t-att-style="'width: ' + (state.summary.reduction_vs_base || 0) + '%'">
+                                        <span t-out="(state.summary.reduction_vs_base || 0).toFixed(1) + '%'"/>
+                                    </div>
+                                </div>
+                                <p class="mb-1">Year-over-Year:</p>
+                                <h4 t-att-class="state.summary.yoy_change > 0 ? 'text-danger' : 'text-success'">
+                                    <i t-att-class="state.summary.yoy_change > 0 ? 'fa fa-arrow-up' : 'fa fa-arrow-down'"/>
+                                    <span t-out="Math.abs(state.summary.yoy_change || 0).toFixed(1) + '%'"/>
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h6 class="card-title">Carbon Offsets</h6>
+                                <p class="mb-1">Available Credits:</p>
+                                <h4 class="text-success" t-out="(state.summary.total_offsets || 0).toFixed(2) + ' tCO2e'"/>
+                                <p class="mb-1 mt-3">Net Emissions:</p>
+                                <h4 t-out="(state.summary.net_emissions || 0).toFixed(2) + ' tCO2e'"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category Breakdown -->
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h6 class="card-title">Emissions by Category</h6>
+                                <table class="table table-sm">
+                                    <tbody>
+                                        <t t-foreach="Object.entries(state.categoryData)" t-as="entry">
+                                            <tr>
+                                                <td t-out="getCategoryLabel(entry[0])"/>
+                                                <td class="text-end" t-out="entry[1].toFixed(2) + ' tCO2e'"/>
+                                            </tr>
+                                        </t>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h6 class="card-title">Active Reduction Targets</h6>
+                                <table class="table table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th>Target</th>
+                                            <th>Scope</th>
+                                            <th>Year</th>
+                                            <th>Progress</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <t t-foreach="state.targets" t-as="target">
+                                            <tr>
+                                                <td t-out="target.name"/>
+                                                <td>
+                                                    <span class="badge" 
+                                                          t-att-style="'background-color: ' + getScopeColor(target.scope)">
+                                                        Scope <t t-out="target.scope"/>
+                                                    </span>
+                                                </td>
+                                                <td t-out="target.target_year"/>
+                                                <td>
+                                                    <div class="progress" style="height: 20px;">
+                                                        <div class="progress-bar bg-success" 
+                                                             t-att-style="'width: ' + Math.min(target.progress, 100) + '%'">
+                                                            <span t-out="target.progress.toFixed(0) + '%'"/>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </t>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Anomalies -->
+                <t t-if="state.anomalies.length > 0">
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <div class="card border-warning">
+                                <div class="card-header bg-warning text-dark">
+                                    <h6 class="mb-0">
+                                        <i class="fa fa-exclamation-triangle"/>
+                                        Anomaly Alerts (<span t-out="state.anomalies.length"/>)
+                                    </h6>
+                                </div>
+                                <div class="card-body">
+                                    <table class="table table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th>Reference</th>
+                                                <th>Period</th>
+                                                <th>Details</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <t t-foreach="state.anomalies" t-as="anomaly">
+                                                <tr>
+                                                    <td t-out="anomaly.name"/>
+                                                    <td t-out="anomaly.period"/>
+                                                    <td t-out="anomaly.notes"/>
+                                                </tr>
+                                            </t>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+
+                <!-- Trend Chart -->
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h6 class="card-title">Emissions Trend</h6>
+                                <div class="table-responsive">
+                                    <table class="table table-sm table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Period</th>
+                                                <th class="text-center">Scope 1</th>
+                                                <th class="text-center">Scope 2</th>
+                                                <th class="text-center">Scope 3</th>
+                                                <th class="text-center">Total</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <t t-foreach="state.trendData" t-as="row">
+                                                <tr>
+                                                    <td t-out="row.period"/>
+                                                    <td class="text-center" t-out="row.scope1?.toFixed(2) || '0'"/>
+                                                    <td class="text-center" t-out="row.scope2?.toFixed(2) || '0'"/>
+                                                    <td class="text-center" t-out="row.scope3?.toFixed(2) || '0'"/>
+                                                    <td class="text-center fw-bold" t-out="row.total?.toFixed(2) || '0'"/>
+                                                </tr>
+                                            </t>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="row">
+                    <div class="col-md-4">
+                        <button class="btn btn-primary w-100 mb-2" t-on-click="navigateToInventories">
+                            <i class="fa fa-book"/>
+                            View Carbon Inventories
+                        </button>
+                    </div>
+                    <div class="col-md-4">
+                        <button class="btn btn-success w-100 mb-2" t-on-click="navigateToTargets">
+                            <i class="fa fa-bullseye"/>
+                            View Reduction Targets
+                        </button>
+                    </div>
+                    <div class="col-md-4">
+                        <button class="btn btn-info w-100 mb-2" t-on-click="navigateToOffsets">
+                            <i class="fa fa-leaf"/>
+                            View Carbon Offsets
+                        </button>
+                    </div>
+                </div>
+            </t>
+        </div>
+    </t>
+
+</templates>

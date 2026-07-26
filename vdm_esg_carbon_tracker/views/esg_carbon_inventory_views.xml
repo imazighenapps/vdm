@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Carbon Inventory Form -->
+    <record id="esg_carbon_inventory_form" model="ir.ui.view">
+        <field name="name">esg.carbon.inventory.form</field>
+        <field name="model">esg.carbon.inventory</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_collecting" string="Start Collection" type="object" 
+                        class="oe_highlight" invisible="state != 'draft'"/>
+                    <button name="action_calculating" string="Calculate Emissions" type="object" 
+                        class="oe_highlight" invisible="state != 'collecting'"/>
+                    <button name="action_validate" string="Validate" type="object" 
+                        class="oe_highlight" invisible="state != 'calculating'"/>
+                    <button name="action_post" string="Post" type="object" 
+                        class="oe_highlight" invisible="state != 'validated'"/>
+                    <button name="action_draft" string="Reset to Draft" type="object" 
+                        invisible="state in ('draft', 'posted')"/>
+                    <button name="action_cancel" string="Cancel" type="object" 
+                        invisible="state in ('draft', 'posted', 'cancelled')"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,collecting,calculating,validated,posted"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_lines" type="object" class="oe_stat_button" icon="fa-list">
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_value"><field name="emission_line_count"/></span>
+                                <span class="o_stat_text">Emission Lines</span>
+                            </div>
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <h1><field name="name" placeholder="Carbon Inventory"/></h1>
+                    </div>
+                    <group>
+                        <group string="Period">
+                            <field name="company_id"/>
+                            <field name="period_start"/>
+                            <field name="period_end"/>
+                            <field name="period_type"/>
+                        </group>
+                        <group string="Intensity Data">
+                            <field name="revenue_amount"/>
+                            <field name="employee_count"/>
+                            <field name="base_year_emissions"/>
+                        </group>
+                    </group>
+                    <group invisible="anomaly_flag == False" class="text-danger">
+                        <div class="alert alert-danger" role="alert">
+                            <strong>Anomaly Detected:</strong> <field name="anomaly_notes" readonly="1"/>
+                        </div>
+                    </group>
+                    <notebook>
+                        <page string="Scope 1 - Direct Emissions" name="scope1">
+                            <group>
+                                <group>
+                                    <field name="scope1_stationary"/>
+                                    <field name="scope1_mobile"/>
+                                </group>
+                                <group>
+                                    <field name="scope1_process"/>
+                                    <field name="scope1_fugitive"/>
+                                </group>
+                                <group>
+                                    <field name="scope1_total" class="oe_stat_value"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Scope 2 - Indirect Energy" name="scope2">
+                            <group>
+                                <group>
+                                    <field name="scope2_electricity"/>
+                                    <field name="scope2_heat"/>
+                                </group>
+                                <group>
+                                    <field name="scope2_total" class="oe_stat_value"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Scope 3 - Value Chain" name="scope3">
+                            <group>
+                                <field name="scope3_total" class="oe_stat_value"/>
+                            </group>
+                        </page>
+                        <page string="Summary" name="summary">
+                            <group>
+                                <group string="Totals">
+                                    <field name="scope1_total"/>
+                                    <field name="scope2_total"/>
+                                    <field name="scope3_total"/>
+                                    <field name="total_emissions" class="oe_stat_value"/>
+                                </group>
+                                <group string="Intensity">
+                                    <field name="intensity_per_revenue"/>
+                                    <field name="intensity_per_employee"/>
+                                    <field name="reduction_vs_base" widget="progressbar"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Notes" name="notes">
+                            <field name="notes"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <!-- Carbon Inventory List -->
+    <record id="esg_carbon_inventory_list" model="ir.ui.view">
+        <field name="name">esg.carbon.inventory.list</field>
+        <field name="model">esg.carbon.inventory</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="period_start"/>
+                <field name="period_end"/>
+                <field name="period_type"/>
+                <field name="scope1_total"/>
+                <field name="scope2_total"/>
+                <field name="scope3_total"/>
+                <field name="total_emissions"/>
+                <field name="reduction_vs_base" widget="progressbar"/>
+                <field name="anomaly_flag" widget="boolean_toggle"/>
+                <field name="state" widget="badge" decoration-success="state == 'posted'" 
+                    decoration-warning="state == 'calculating'" decoration-info="state == 'draft'"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Carbon Inventory Search -->
+    <record id="esg_carbon_inventory_search" model="ir.ui.view">
+        <field name="name">esg.carbon.inventory.search</field>
+        <field name="model">esg.carbon.inventory</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="company_id"/>
+                <separator/>
+                <filter name="draft" string="Draft" domain="[('state', '=', 'draft')]"/>
+                <filter name="calculating" string="Calculating" domain="[('state', '=', 'calculating')]"/>
+                <filter name="posted" string="Posted" domain="[('state', '=', 'posted')]"/>
+                <separator/>
+                <filter name="anomalies" string="Has Anomalies" domain="[('anomaly_flag', '=', True)]"/>
+                <group expand="0" string="Group By">
+                    <filter name="group_by_period" string="Period Type" context="{'group_by': 'period_type'}"/>
+                    <filter name="group_by_year" string="Year" context="{'group_by': 'period_start:year'}"/>
+                    <filter name="group_by_state" string="Status" context="{'group_by': 'state'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Carbon Inventory Action -->
+    <record id="action_esg_carbon_inventory" model="ir.actions.act_window">
+        <field name="name">Carbon Inventories</field>
+        <field name="res_model">esg.carbon.inventory</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="esg_carbon_inventory_search"/>
+        <field name="context">{'search_default_posted': 1}</field>
+    </record>
+</odoo>
