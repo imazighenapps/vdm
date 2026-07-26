@@ -48,6 +48,9 @@
             'vdm_fleet_management_plus/static/src/js/dashboard.js',
         ],
     },
+    'images': [
+        'static/description/banner.png',
+    ],
     'installable': True,
     'application': True,
     'auto_install': False,
