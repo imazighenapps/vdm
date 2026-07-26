@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'AI Invoice Digitization Pro',
-    'version': '19.0.1.0.0',
+    'version': '18.0.1.0.0',
     'category': 'Accounting/Invoicing',
     'summary': 'AI-powered invoice extraction with 5 providers, self-learning, and cross-validation',
     'description': """
