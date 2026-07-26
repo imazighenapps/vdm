@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_ai_chatbot_config_form" model="ir.ui.view">
+        <field name="name">ai.chatbot.config.form</field>
+        <field name="model">ai.chatbot.config</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1>
+                            <field name="name" placeholder="Chatbot Configuration"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group string="AI Provider">
+                            <field name="provider"/>
+                            <field name="api_key" password="True" invisible="provider == 'ollama'"/>
+                            <field name="ollama_url" invisible="provider != 'ollama'"/>
+                            <field name="model"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                        </group>
+                        <group string="Chat Settings">
+                            <field name="max_tokens"/>
+                            <field name="temperature"/>
+                            <field name="active"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group string="Channels">
+                            <field name="whatsapp_enabled"/>
+                            <field name="whatsapp_phone" invisible="not whatsapp_enabled"/>
+                            <field name="whatsapp_token" invisible="not whatsapp_enabled" password="True"/>
+                            <field name="website_enabled"/>
+                        </group>
+                        <group string="Statistics">
+                            <field name="total_conversations"/>
+                            <field name="total_messages"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Prompts" name="prompts">
+                            <group>
+                                <field name="system_prompt" widget="text" nolabel="1" rows="8"/>
+                                <field name="welcome_message" widget="text" nolabel="1" rows="3"/>
+                                <field name="fallback_message" widget="text" nolabel="1" rows="3"/>
+                            </group>
+                        </page>
+                        <page string="Conversations" name="conversations">
+                            <field name="conversation_ids"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_ai_chatbot_config_list" model="ir.ui.view">
+        <field name="name">ai.chatbot.config.list</field>
+        <field name="model">ai.chatbot.config</field>
+        <field name="arch" type="xml">
+            <list string="Chatbot Configurations">
+                <field name="name"/>
+                <field name="provider"/>
+                <field name="model"/>
+                <field name="whatsapp_enabled" widget="boolean_toggle"/>
+                <field name="website_enabled" widget="boolean_toggle"/>
+                <field name="total_conversations"/>
+                <field name="active" widget="boolean_toggle"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="action_ai_chatbot_config" model="ir.actions.act_window">
+        <field name="name">Chatbot Configurations</field>
+        <field name="res_model">ai.chatbot.config</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

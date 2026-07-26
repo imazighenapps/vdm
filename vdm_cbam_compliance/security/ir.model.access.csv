@@ -1,0 +1,17 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_cbam_import_event_user,cbam.import.event.user,model_cbam_import_event,group_cbam_user,1,1,1,1
+access_cbam_import_event_manager,cbam.import.event.manager,model_cbam_import_event,group_cbam_manager,1,1,1,1
+access_cbam_emission_data_user,cbam.emission.data.user,model_cbam_emission_data,group_cbam_user,1,1,1,1
+access_cbam_emission_data_manager,cbam.emission.data.manager,model_cbam_emission_data,group_cbam_manager,1,1,1,1
+access_cbam_certificate_user,cbam.certificate.user,model_cbam_certificate,group_cbam_user,1,0,0,0
+access_cbam_certificate_manager,cbam.certificate.manager,model_cbam_certificate,group_cbam_manager,1,1,1,1
+access_cbam_certificate_surrender_user,cbam.certificate.surrender.user,model_cbam_certificate_surrender,group_cbam_user,1,0,0,0
+access_cbam_certificate_surrender_manager,cbam.certificate.surrender.manager,model_cbam_certificate_surrender,group_cbam_manager,1,1,1,1
+access_cbam_quarterly_report_user,cbam.quarterly.report.user,model_cbam_quarterly_report,group_cbam_user,1,0,0,0
+access_cbam_quarterly_report_manager,cbam.quarterly.report.manager,model_cbam_quarterly_report,group_cbam_manager,1,1,1,1
+access_cbam_supplier_user,cbam.supplier.user,model_cbam_supplier,group_cbam_user,1,1,1,1
+access_cbam_supplier_manager,cbam.supplier.manager,model_cbam_supplier,group_cbam_manager,1,1,1,1
+access_cbam_sector_data_user,cbam.sector.data.user,model_cbam_sector_data,group_cbam_user,1,0,0,0
+access_cbam_sector_data_manager,cbam.sector.data.manager,model_cbam_sector_data,group_cbam_manager,1,1,1,1
+access_cbam_emission_factor_user,cbam.emission.factor.user,model_cbam_emission_factor,group_cbam_user,1,0,0,0
+access_cbam_emission_factor_manager,cbam.emission.factor.manager,model_cbam_emission_factor,group_cbam_manager,1,1,1,1

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_res_config_settings_form" model="ir.ui.view">
+        <field name="name">res.config.settings.form.inherit.ai.chatbot</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.view_res_config_settings"/>
+        <field name="groups" eval="[(4, ref('base.group_system'))]"/>
+        <field name="arch" type="xml">
+            <xpath expr="//app[@name='crm']" position="after">
+                <app string="AI Chatbot" name="ai_chatbot" sequence="40">
+                    <block title="AI Chatbot Settings" name="ai_chatbot_settings">
+                        <setting id="ai_chatbot_setting" string="Enable AI Chatbot"
+                                 help="Activate AI-powered chatbot for WhatsApp and website">
+                            <field name="ai_chatbot_enabled"/>
+                        </setting>
+                    </block>
+                </app>
+            </xpath>
+        </field>
+    </record>
+</odoo>

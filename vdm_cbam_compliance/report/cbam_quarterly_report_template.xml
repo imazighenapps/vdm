@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="report_cbam_quarterly" model="ir.actions.report">
+        <field name="name">CBAM Quarterly Report</field>
+        <field name="model">cbam.quarterly.report</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">vdm_cbam_compliance.report_cbam_quarterly</field>
+        <field name="report_file">vdm_cbam_compliance.report_cbam_quarterly</field>
+        <field name="binding_model_id" ref="model_cbam_quarterly_report"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="report_cbam_quarterly">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2>CBAM Quarterly Report - <span t-field="doc.name"/></h2>
+
+                        <div class="row mt32 mb32">
+                            <div class="col-6">
+                                <strong>Report Period:</strong> <span t-field="doc.quarter"/> <span t-field="doc.year"/>
+                            </div>
+                            <div class="col-6">
+                                <strong>Status:</strong> <span t-field="doc.status"/>
+                            </div>
+                        </div>
+
+                        <h3>Summary</h3>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Metric</th>
+                                    <th>Value</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Total Imported (tonnes)</td>
+                                    <td><span t-field="doc.total_imported_tonnes"/></td>
+                                </tr>
+                                <tr>
+                                    <td>Total Emissions (tCO2e)</td>
+                                    <td><span t-field="doc.total_emissions"/></td>
+                                </tr>
+                                <tr>
+                                    <td>Certificates to Surrender</td>
+                                    <td><span t-field="doc.certificates_to_surrender"/></td>
+                                </tr>
+                                <tr>
+                                    <td>Certificate Balance</td>
+                                    <td><span t-field="doc.certificates_balance"/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <h3 class="mt32">Import Events</h3>
+                        <table class="table table-bordered table-sm">
+                            <thead>
+                                <tr>
+                                    <th>Reference</th>
+                                    <th>Product</th>
+                                    <th>Supplier</th>
+                                    <th>Country</th>
+                                    <th>Sector</th>
+                                    <th class="text-end">Quantity (t)</th>
+                                    <th class="text-end">Emission Factor</th>
+                                    <th class="text-end">Total Emissions (tCO2e)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="doc.import_event_ids" t-as="event">
+                                    <td><span t-field="event.name"/></td>
+                                    <td><span t-field="event.product_id"/></td>
+                                    <td><span t-field="event.supplier_id"/></td>
+                                    <td><span t-field="event.origin_country_id"/></td>
+                                    <td><span t-field="event.sector"/></td>
+                                    <td class="text-end"><span t-field="event.quantity"/></td>
+                                    <td class="text-end"><span t-field="event.emission_factor"/></td>
+                                    <td class="text-end"><span t-field="event.total_emissions"/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="mt32">
+                            <div class="row">
+                                <div class="col-4">
+                                    <strong>Prepared By:</strong> <span t-field="doc.prepared_by"/>
+                                </div>
+                                <div class="col-4">
+                                    <strong>Validated By:</strong> <span t-field="doc.validated_by"/>
+                                </div>
+                                <div class="col-4">
+                                    <strong>Approved By:</strong> <span t-field="doc.approved_by"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

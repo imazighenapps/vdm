@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="ir_config_parameter_ai_chatbot_default_provider" model="ir.config_parameter">
+            <field name="key">ai_chatbot.default_provider</field>
+            <field name="value">openai</field>
+        </record>
+    </data>
+</odoo>

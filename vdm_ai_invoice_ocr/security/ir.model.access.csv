@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_ai_invoice_config_user,ai.invoice.config.user,model_ai_invoice_config,group_ai_invoice_user,1,0,0,0
+access_ai_invoice_config_manager,ai.invoice.config.manager,model_ai_invoice_config,group_ai_invoice_manager,1,1,1,1
+access_ai_vendor_memory_user,ai.vendor.memory.user,model_ai_vendor_memory,group_ai_invoice_user,1,0,0,0
+access_ai_vendor_memory_manager,ai.vendor.memory.manager,model_ai_vendor_memory,group_ai_invoice_manager,1,1,1,1
+access_ai_invoice_digitize_wizard,ai.invoice.digitize.wizard,model_ai_invoice_digitize_wizard,group_ai_invoice_user,1,1,1,1

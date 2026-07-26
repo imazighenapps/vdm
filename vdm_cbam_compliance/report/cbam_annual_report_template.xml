@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="report_cbam_annual" model="ir.actions.report">
+        <field name="name">CBAM Annual Summary</field>
+        <field name="model">cbam.quarterly.report</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">vdm_cbam_compliance.report_cbam_annual</field>
+        <field name="report_file">vdm_cbam_compliance.report_cbam_annual</field>
+        <field name="binding_model_id" ref="model_cbam_quarterly_report"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="report_cbam_annual">
+        <t t-call="web.html_container">
+            <t t-set="year" t-value="docs[0].year if docs else 0"/>
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <h2>CBAM Annual Summary - <span t-esc="year"/></h2>
+
+                    <h3 class="mt32 mb16">Quarterly Breakdown</h3>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Quarter</th>
+                                <th class="text-end">Imported (tonnes)</th>
+                                <th class="text-end">Emissions (tCO2e)</th>
+                                <th class="text-end">Certificates Surrendered</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-set="total_qty" t-value="0"/>
+                            <t t-set="total_em" t-value="0"/>
+                            <t t-set="total_cert" t-value="0"/>
+                            <tr t-foreach="docs" t-as="report">
+                                <td><span t-field="report.quarter"/></td>
+                                <td class="text-end"><span t-field="report.total_imported_tonnes"/></td>
+                                <td class="text-end"><span t-field="report.total_emissions"/></td>
+                                <td class="text-end"><span t-field="report.certificates_to_surrender"/></td>
+                                <td><span t-field="report.status"/></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

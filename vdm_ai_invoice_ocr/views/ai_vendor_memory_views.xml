@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_ai_vendor_memory_list" model="ir.ui.view">
+        <field name="name">ai.vendor.memory.list</field>
+        <field name="model">ai.vendor.memory</field>
+        <field name="arch" type="xml">
+            <list string="Vendor Learning Memory">
+                <field name="partner_id"/>
+                <field name="field_name"/>
+                <field name="original_value"/>
+                <field name="corrected_value"/>
+                <field name="correction_count"/>
+                <field name="last_correction"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="action_ai_vendor_memory" model="ir.actions.act_window">
+        <field name="name">Vendor Learning Memory</field>
+        <field name="res_model">ai.vendor.memory</field>
+        <field name="view_mode">list</field>
+    </record>
+</odoo>

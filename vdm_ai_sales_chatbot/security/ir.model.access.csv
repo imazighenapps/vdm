@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_ai_chatbot_config_user,ai.chatbot.config.user,model_ai_chatbot_config,group_ai_chatbot_user,1,0,0,0
+access_ai_chatbot_config_manager,ai.chatbot.config.manager,model_ai_chatbot_config,group_ai_chatbot_manager,1,1,1,1
+access_ai_chatbot_conversation_user,ai.chatbot.conversation.user,model_ai_chatbot_conversation,group_ai_chatbot_user,1,1,1,1
+access_ai_chatbot_conversation_manager,ai.chatbot.conversation.manager,model_ai_chatbot_conversation,group_ai_chatbot_manager,1,1,1,1
+access_ai_chatbot_message_user,ai.chatbot.message.user,model_ai_chatbot_message,group_ai_chatbot_user,1,1,1,1
+access_ai_chatbot_message_manager,ai.chatbot.message.manager,model_ai_chatbot_message,group_ai_chatbot_manager,1,1,1,1

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="cbam_sector_cement" model="cbam.sector.data">
+            <field name="code">cement</field>
+            <field name="name">Cement</field>
+            <field name="default_emission">0.618</field>
+        </record>
+        <record id="cbam_sector_steel" model="cbam.sector.data">
+            <field name="code">steel</field>
+            <field name="name">Iron &amp; Steel</field>
+            <field name="default_emission">1.37</field>
+        </record>
+        <record id="cbam_sector_aluminium" model="cbam.sector.data">
+            <field name="code">aluminium</field>
+            <field name="name">Aluminium</field>
+            <field name="default_emission">6.74</field>
+        </record>
+        <record id="cbam_sector_fertilizer" model="cbam.sector.data">
+            <field name="code">fertilizer</field>
+            <field name="name">Fertilizers</field>
+            <field name="default_emission">1.52</field>
+        </record>
+        <record id="cbam_sector_electricity" model="cbam.sector.data">
+            <field name="code">electricity</field>
+            <field name="name">Electricity</field>
+            <field name="default_emission">0.37</field>
+        </record>
+        <record id="cbam_sector_hydrogen" model="cbam.sector.data">
+            <field name="code">hydrogen</field>
+            <field name="name">Hydrogen</field>
+            <field name="default_emission">3.42</field>
+        </record>
+    </data>
+</odoo>

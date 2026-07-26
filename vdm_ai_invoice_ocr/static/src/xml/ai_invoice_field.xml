@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates xml:space="preserve">
+    <t t-name="vdm_ai_invoice_ocr.AiDigitizeButton">
+        <button class="btn btn-primary o_ai_digitize_btn"
+                t-on-click="onClick"
+                t-att-disabled="state.loading">
+            <i t-attf-class="fa #{state.loading ? 'fa-spinner fa-spin' : 'fa-magic'}"/>
+            <span t-if="!state.loading">AI Digitize</span>
+            <span t-else="">Processing...</span>
+        </button>
+    </t>
+</templates>

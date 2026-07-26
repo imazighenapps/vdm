@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Root Menu -->
+    <menuitem id="menu_cbam_root"
+              name="CBAM Compliance"
+              web_icon="vdm_cbam_compliance,static/description/icon.png"
+              groups="vdm_cbam_compliance.group_cbam_manager"
+              sequence="10"/>
+
+    <!-- Dashboard Menu -->
+    <menuitem id="menu_cbam_dashboard"
+              name="Dashboard"
+              parent="menu_cbam_root"
+              sequence="10"/>
+
+    <!-- Import Events Menu -->
+    <menuitem id="menu_cbam_import_events"
+              name="Import Events"
+              parent="menu_cbam_root"
+              action="action_cbam_import_events"
+              sequence="20"/>
+
+    <!-- Certificates Menu -->
+    <menuitem id="menu_cbam_certificates"
+              name="Certificates"
+              parent="menu_cbam_root"
+              action="action_cbam_certificates"
+              sequence="30"/>
+
+    <!-- Quarterly Reports Menu -->
+    <menuitem id="menu_cbam_reports"
+              name="Quarterly Reports"
+              parent="menu_cbam_root"
+              action="action_cbam_quarterly_reports"
+              sequence="40"/>
+
+    <!-- Configuration Menu -->
+    <menuitem id="menu_cbam_config"
+              name="Configuration"
+              parent="menu_cbam_root"
+              sequence="90"/>
+
+    <!-- Config Sub-menus -->
+    <menuitem id="menu_cbam_products"
+              name="CBAM Products"
+              parent="menu_cbam_config"
+              action="action_cbam_products"
+              sequence="10"/>
+
+    <menuitem id="menu_cbam_suppliers"
+              name="CBAM Suppliers"
+              parent="menu_cbam_config"
+              action="action_cbam_suppliers"
+              sequence="20"/>
+
+    <!-- Wizard Menu -->
+    <menuitem id="menu_cbam_import_wizard"
+              name="Import CSV Data"
+              parent="menu_cbam_config"
+              action="action_cbam_wizard_import"
+              sequence="30"/>
+</odoo>

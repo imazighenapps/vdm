@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_account_move_form_digitize" model="ir.ui.view">
+        <field name="name">account.move.form.digitize</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='header']" position="inside">
+                <button name="%(action_ai_digitize_wizard)d"
+                        type="action"
+                        string="AI Digitize"
+                        class="oe_highlight"
+                        invisible="move_type not in ('in_invoice', 'in_refund') or state != 'draft'"
+                        groups="account.group_account_manager"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_ai_invoice_digitize_wizard_form" model="ir.ui.view">
+        <field name="name">ai.invoice.digitize.wizard.form</field>
+        <field name="model">ai.invoice.digitize.wizard</field>
+        <field name="arch" type="xml">
+            <form string="AI Invoice Digitization">
+                <sheet>
+                    <group>
+                        <field name="invoice_id" invisible="1"/>
+                        <field name="config_id"/>
+                        <field name="file" filename="filename" invisible="not provide_file"/>
+                        <field name="filename" invisible="1"/>
+                        <field name="provide_file"/>
+                    </group>
+                    <group string="Extraction Result" invisible="not extraction_done">
+                        <field name="invoice_number"/>
+                        <field name="invoice_date"/>
+                        <field name="due_date"/>
+                        <field name="vendor_name"/>
+                        <field name="total_amount"/>
+                        <field name="subtotal"/>
+                        <field name="tax_amount"/>
+                        <field name="currency"/>
+                        <field name="validation_errors"/>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="action_digitize" string="Extract Data" type="object"
+                            class="oe_highlight" invisible="extraction_done"/>
+                    <button name="action_apply" string="Apply to Invoice" type="object"
+                            class="oe_highlight" invisible="not extraction_done"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_ai_digitize_wizard" model="ir.actions.act_window">
+        <field name="name">AI Digitize Invoice</field>
+        <field name="res_model">ai.invoice.digitize.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

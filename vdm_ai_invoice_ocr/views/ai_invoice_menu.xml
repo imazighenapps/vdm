@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_ai_invoice_root"
+              name="AI Invoice OCR"
+              web_icon="vdm_ai_invoice_ocr,static/description/icon.png"
+              groups="group_ai_invoice_manager"
+              sequence="30"/>
+
+    <menuitem id="menu_ai_invoice_config"
+              name="Configuration"
+              parent="menu_ai_invoice_root"
+              action="action_ai_invoice_config"
+              groups="group_ai_invoice_manager"
+              sequence="10"/>
+
+    <menuitem id="menu_ai_invoice_vendor_memory"
+              name="Vendor Learning"
+              parent="menu_ai_invoice_root"
+              action="action_ai_vendor_memory"
+              groups="group_ai_invoice_manager"
+              sequence="30"/>
+</odoo>
+

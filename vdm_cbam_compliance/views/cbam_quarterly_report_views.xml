@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_cbam_quarterly_report_form" model="ir.ui.view">
+        <field name="name">cbam.quarterly.report.form</field>
+        <field name="model">cbam.quarterly.report</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_submit" type="object" string="Submit Report"
+                            invisible="status != 'draft'" class="oe_highlight"/>
+                    <button name="action_validate" type="object" string="Validate"
+                            invisible="status != 'submitted'" class="oe_highlight"/>
+                    <button name="action_approve" type="object" string="Approve"
+                            invisible="status != 'validated'" class="oe_highlight"/>
+                    <button name="action_draft" type="object" string="Reset to Draft"
+                            invisible="status == 'draft'"/>
+                    <button name="generate_csv_export" type="object" string="Export CSV"
+                            invisible="status == 'draft'" class="oe_highlight"/>
+                    <field name="status" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1>
+                            <field name="name" placeholder="Report Reference"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group string="Report Period">
+                            <field name="year"/>
+                            <field name="quarter"/>
+                        </group>
+                        <group string="Summary">
+                            <field name="total_imported_tonnes"/>
+                            <field name="total_emissions"/>
+                            <field name="certificates_to_surrender"/>
+                            <field name="certificates_balance"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Import Events" name="imports">
+                            <field name="import_event_ids" readonly="status != 'draft'"/>
+                        </page>
+                        <page string="Certificate Surrenders" name="surrenders">
+                            <field name="certificate_surrender_ids" readonly="status != 'draft'"/>
+                        </page>
+                        <page string="Approval" name="approval">
+                            <group>
+                                <field name="prepared_by"/>
+                                <field name="validated_by"/>
+                                <field name="approved_by"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_cbam_quarterly_report_list" model="ir.ui.view">
+        <field name="name">cbam.quarterly.report.list</field>
+        <field name="model">cbam.quarterly.report</field>
+        <field name="arch" type="xml">
+            <list string="Quarterly Reports" decoration-danger="status == 'draft'"
+                  decoration-warning="status in ('submitted', 'validated')" decoration-success="status == 'approved'">
+                <field name="name"/>
+                <field name="year"/>
+                <field name="quarter"/>
+                <field name="total_imported_tonnes"/>
+                <field name="total_emissions"/>
+                <field name="certificates_to_surrender"/>
+                <field name="status" widget="badge"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_cbam_quarterly_report_search" model="ir.ui.view">
+        <field name="name">cbam.quarterly.report.search</field>
+        <field name="model">cbam.quarterly.report</field>
+        <field name="arch" type="xml">
+            <search string="Quarterly Reports">
+                <field name="name"/>
+                <field name="year"/>
+                <filter name="filter_draft" string="Draft" domain="[('status', '=', 'draft')]"/>
+                <filter name="filter_submitted" string="Submitted" domain="[('status', '=', 'submitted')]"/>
+                <filter name="filter_approved" string="Approved" domain="[('status', '=', 'approved')]"/>
+                <separator/>
+                <group expand="0" string="Group By">
+                    <filter string="Year" name="group_year" context="{'group_by': 'year'}"/>
+                    <filter string="Quarter" name="group_quarter" context="{'group_by': 'quarter'}"/>
+                    <filter string="Status" name="group_status" context="{'group_by': 'status'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_cbam_quarterly_reports" model="ir.actions.act_window">
+        <field name="name">CBAM Quarterly Reports</field>
+        <field name="res_model">cbam.quarterly.report</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No quarterly reports created yet.
+            </p>
+        </field>
+    </record>
+</odoo>

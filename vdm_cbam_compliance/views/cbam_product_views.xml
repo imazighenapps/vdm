@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_cbam_product_form" model="ir.ui.view">
+        <field name="name">cbam.product.form</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet" position="before">
+                <div class="oe_title" invisible="not cbam_covered">
+                    <h1>
+                        <span class="text-danger">CBAM Covered Product</span>
+                    </h1>
+                </div>
+            </xpath>
+            <xpath expr="//group[@name='inventory']" position="before">
+                <group string="CBAM Compliance" name="cbam">
+                    <field name="cbam_covered"/>
+                    <field name="cbam_sector" invisible="not cbam_covered"/>
+                    <field name="hs_code" invisible="not cbam_covered"/>
+                    <field name="embedded_emission" invisible="not cbam_covered"/>
+                    <field name="total_embedded_emission" invisible="not cbam_covered"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_cbam_product_list" model="ir.ui.view">
+        <field name="name">cbam.product.list</field>
+        <field name="model">product.template</field>
+        <field name="arch" type="xml">
+            <list string="CBAM Products">
+                <field name="name"/>
+                <field name="cbam_covered" widget="boolean_toggle"/>
+                <field name="cbam_sector"/>
+                <field name="hs_code"/>
+                <field name="embedded_emission"/>
+                <field name="total_embedded_emission"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="action_cbam_products" model="ir.actions.act_window">
+        <field name="name">CBAM Products</field>
+        <field name="res_model">product.template</field>
+        <field name="view_mode">list,form</field>
+        <field name="domain">[('cbam_covered', '=', True)]</field>
+        <field name="context">{'default_cbam_covered': True}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No CBAM-covered products configured yet.
+            </p>
+            <p>
+                Mark products as CBAM-covered and define their embedded emissions.
+            </p>
+        </field>
+    </record>
+</odoo>

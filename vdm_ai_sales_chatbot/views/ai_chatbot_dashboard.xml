@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_ai_chatbot_root"
+              name="AI Chatbot"
+              web_icon="vdm_ai_sales_chatbot,static/description/icon.png"
+              groups="group_ai_chatbot_manager"
+              sequence="25"/>
+
+    <menuitem id="menu_ai_chatbot_config"
+              name="Configuration"
+              parent="menu_ai_chatbot_root"
+              action="action_ai_chatbot_config"
+              groups="group_ai_chatbot_manager"
+              sequence="10"/>
+
+    <menuitem id="menu_ai_chatbot_conversations"
+              name="Conversations"
+              parent="menu_ai_chatbot_root"
+              action="action_ai_chatbot_conversations"
+              sequence="20"/>
+</odoo>
