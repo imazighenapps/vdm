@@ -2,7 +2,7 @@
 {
     'name': 'Construction Time Tracker',
     'summary': 'Track labor hours, phases, workers, and costs for construction projects',
-    'version': '19.0.1.0.0',
+    'version': '18.0.1.0.0',
     'category': 'Services/Project',
     'description': """
         Construction Time Tracker
